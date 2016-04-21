@@ -8,7 +8,23 @@
 
 #import "RWTFlickrSearchViewModel.h"
 
+@interface RWTFlickrSearchViewModel ()
+
+@property (nonatomic, weak) id<RWTViewModelServices> services;
+
+@end
+
 @implementation RWTFlickrSearchViewModel
+
+
+- (instancetype) initWithServices:(id<RWTViewModelServices>)services {
+    self = [super init];
+    if (self) {
+        self.services = services;
+        [self initialize];
+    }
+    return self;
+}
 
 - (instancetype)init {
     self = [super init];
@@ -21,6 +37,16 @@
 - (void)initialize {
     self.searchText = @"search text";
     self.title = @"Imgur Gallery";
+    
+    self.executeSearch =
+    [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [self executeSearchSignal];
+    }];
+}
+
+- (RACSignal *)executeSearchSignal {
+    return [[self.services getImgurSearchService]
+            imgurSearchSignal:self.searchText];
 }
 
 @end
