@@ -35,6 +35,8 @@
 		DD5F7F051CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F031CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m */; };
 		DD5F7F0F1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F0E1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m */; };
 		DD5F7F101CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F0E1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m */; };
+		DD5F7F181CC994D500B9CDC3 /* RWTViewModelServicesImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F171CC994D500B9CDC3 /* RWTViewModelServicesImpl.m */; };
+		DD5F7F191CC994D500B9CDC3 /* RWTViewModelServicesImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F171CC994D500B9CDC3 /* RWTViewModelServicesImpl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,9 +88,12 @@
 		7D8CB3F8B1184D979703C3ED /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5F7F021CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RWTFlickrSearchViewModel.h; path = RWTFlickrSearchViewModel/RWTFlickrSearchViewModel.h; sourceTree = "<group>"; };
 		DD5F7F031CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RWTFlickrSearchViewModel.m; path = RWTFlickrSearchViewModel/RWTFlickrSearchViewModel.m; sourceTree = "<group>"; };
-		DD5F7F071CC9872500B9CDC3 /* RWTImgurSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurSearch.h; sourceTree = "<group>"; };
 		DD5F7F0D1CC987AF00B9CDC3 /* RWTImgurSearchImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurSearchImpl.h; sourceTree = "<group>"; };
 		DD5F7F0E1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurSearchImpl.m; sourceTree = "<group>"; };
+		DD5F7F121CC9896A00B9CDC3 /* RWTImgurSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurSearch.h; sourceTree = "<group>"; };
+		DD5F7F151CC989A600B9CDC3 /* RWTViewModelServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTViewModelServices.h; sourceTree = "<group>"; };
+		DD5F7F161CC994D500B9CDC3 /* RWTViewModelServicesImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTViewModelServicesImpl.h; sourceTree = "<group>"; };
+		DD5F7F171CC994D500B9CDC3 /* RWTViewModelServicesImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTViewModelServicesImpl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +174,8 @@
 				72E4017F192BFFCE00354806 /* RWTAppDelegate.m */,
 				72E40187192BFFCE00354806 /* Images.xcassets */,
 				72E40176192BFFCE00354806 /* Supporting Files */,
+				DD5F7F161CC994D500B9CDC3 /* RWTViewModelServicesImpl.h */,
+				DD5F7F171CC994D500B9CDC3 /* RWTViewModelServicesImpl.m */,
 			);
 			path = RWTFlickrSearch;
 			sourceTree = "<group>";
@@ -235,7 +242,7 @@
 		DD5F7F061CC986F400B9CDC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DD5F7F071CC9872500B9CDC3 /* RWTImgurSearch.h */,
+				DD5F7F111CC9896A00B9CDC3 /* Protocols */,
 				DD5F7F081CC9877800B9CDC3 /* RWTImgurSearchImpl */,
 			);
 			path = Model;
@@ -248,6 +255,15 @@
 				DD5F7F0E1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m */,
 			);
 			path = RWTImgurSearchImpl;
+			sourceTree = "<group>";
+		};
+		DD5F7F111CC9896A00B9CDC3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F7F121CC9896A00B9CDC3 /* RWTImgurSearch.h */,
+				DD5F7F151CC989A600B9CDC3 /* RWTViewModelServices.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		E727A00DFADFDE1C79BBF450 /* Pods */ = {
@@ -421,6 +437,7 @@
 				728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */,
 				72E401B4192C03AB00354806 /* RWTFlickrSearchViewController.m in Sources */,
 				DD5F7F0F1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */,
+				DD5F7F181CC994D500B9CDC3 /* RWTViewModelServicesImpl.m in Sources */,
 				DD5F7F041CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD5F7F191CC994D500B9CDC3 /* RWTViewModelServicesImpl.m in Sources */,
 				72E4019B192BFFCE00354806 /* RWTFlickrSearchTests.m in Sources */,
 				DD5F7F101CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */,
 				DD5F7F051CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */,

@@ -11,6 +11,7 @@
 @implementation RWTImgurSearchImpl
 
 -(RACSignal *)imgurSearchSignal:(NSString *)searchString{
+        
     return [[[[RACSignal empty]
               logAll]
              delay:2.0]
