@@ -31,6 +31,8 @@
 		72E401BE192C050F00354806 /* RWTSearchResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E401BC192C050F00354806 /* RWTSearchResultsTableViewCell.m */; };
 		72E401BF192C050F00354806 /* RWTSearchResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72E401BD192C050F00354806 /* RWTSearchResultsTableViewCell.xib */; };
 		A60F282A374641B387052C92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8CB3F8B1184D979703C3ED /* libPods.a */; };
+		DD5F7F041CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F031CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m */; };
+		DD5F7F051CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F031CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		72E401BC192C050F00354806 /* RWTSearchResultsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTSearchResultsTableViewCell.m; sourceTree = "<group>"; };
 		72E401BD192C050F00354806 /* RWTSearchResultsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RWTSearchResultsTableViewCell.xib; sourceTree = "<group>"; };
 		7D8CB3F8B1184D979703C3ED /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD5F7F021CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RWTFlickrSearchViewModel.h; path = RWTFlickrSearchViewModel/RWTFlickrSearchViewModel.h; sourceTree = "<group>"; };
+		DD5F7F031CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RWTFlickrSearchViewModel.m; path = RWTFlickrSearchViewModel/RWTFlickrSearchViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +158,8 @@
 			children = (
 				728550B1193E52510032A754 /* Util */,
 				72E401C1192C82CA00354806 /* Model */,
-				72E401C0192C82C100354806 /* ViewModel */,
 				72E401A4192C03AB00354806 /* View */,
+				DD5F7F011CC9753400B9CDC3 /* ViewModel */,
 				72E4017E192BFFCE00354806 /* RWTAppDelegate.h */,
 				72E4017F192BFFCE00354806 /* RWTAppDelegate.m */,
 				72E40187192BFFCE00354806 /* Images.xcassets */,
@@ -214,18 +218,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		72E401C0192C82C100354806 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		72E401C1192C82CA00354806 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DD5F7F011CC9753400B9CDC3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F7F021CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.h */,
+				DD5F7F031CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E727A00DFADFDE1C79BBF450 /* Pods */ = {
@@ -398,6 +404,7 @@
 				72E401B9192C03AB00354806 /* RWTSearchResultsViewController.m in Sources */,
 				728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */,
 				72E401B4192C03AB00354806 /* RWTFlickrSearchViewController.m in Sources */,
+				DD5F7F041CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72E4019B192BFFCE00354806 /* RWTFlickrSearchTests.m in Sources */,
+				DD5F7F051CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +527,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RWTFlickrSearch/RWTFlickrSearch-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "RWTFlickrSearch/RWTFlickrSearch-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -533,6 +542,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RWTFlickrSearch/RWTFlickrSearch-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "RWTFlickrSearch/RWTFlickrSearch-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

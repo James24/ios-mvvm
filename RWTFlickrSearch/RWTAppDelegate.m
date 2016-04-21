@@ -8,10 +8,12 @@
 
 #import "RWTAppDelegate.h"
 #import "RWTFlickrSearchViewController.h"
+#import "RWTFlickrSearchViewModel.h"
 
 @interface RWTAppDelegate ()
 
 @property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, strong) RWTFlickrSearchViewModel *viewModel;
 
 @end
 
@@ -19,16 +21,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  // create a navigation controller and perform some simple styling
   self.navigationController = [UINavigationController new];
   self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
   [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
   
-  // create and navigate to a view controller
   UIViewController *viewController = [self createInitialViewController];
   [self.navigationController pushViewController:viewController animated:NO];
 
-  // show the navigation controller
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = self.navigationController;
   [self.window makeKeyAndVisible];
@@ -36,7 +35,10 @@
 }
 
 - (UIViewController *)createInitialViewController {
-  return [[RWTFlickrSearchViewController alloc] init];
+
+    self.viewModel = [RWTFlickrSearchViewModel new];
+    
+    return [[RWTFlickrSearchViewController alloc] initWithViewModel:self.viewModel];
 }
 
 @end
