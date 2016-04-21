@@ -35,6 +35,8 @@
     [self setupViewController];
     
     [self bindViewModel];
+    
+    [self.viewModel.executeSearch execute:nil];
 }
 
 #pragma mark - Private methods
@@ -49,6 +51,8 @@
 - (void)bindViewModel{
     self.title = self.viewModel.title;
     self.searchTextField.text = self.viewModel.searchText;
+    
+    RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeSearch.executing;
 }
 
 @end

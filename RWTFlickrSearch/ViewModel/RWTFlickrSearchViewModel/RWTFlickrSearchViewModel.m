@@ -21,6 +21,18 @@
 - (void)initialize {
     self.searchText = @"search text";
     self.title = @"Imgur Gallery";
+    
+    self.executeSearch =
+    [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [self executeSearchSignal];
+    }];
+}
+
+- (RACSignal *)executeSearchSignal {
+    return [[[[RACSignal empty]
+              logAll]
+             delay:2.0]
+            logAll];
 }
 
 @end
