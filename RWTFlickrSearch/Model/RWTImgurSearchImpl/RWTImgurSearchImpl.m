@@ -7,15 +7,19 @@
 //
 
 #import "RWTImgurSearchImpl.h"
+#import "RWTImgurApiRequest.h"
 
 @implementation RWTImgurSearchImpl
 
 -(RACSignal *)imgurSearchSignal:(NSString *)searchString{
         
-    return [[[[RACSignal empty]
-              logAll]
-             delay:2.0]
-            logAll];
+    RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {
+        
+    }];
+    
+    RACSignal *requestSinal = [[[RWTImgurApiRequest alloc] init] signalForGetWithUrl:url];
+    
+    return requestSinal;
 }
 
 @end

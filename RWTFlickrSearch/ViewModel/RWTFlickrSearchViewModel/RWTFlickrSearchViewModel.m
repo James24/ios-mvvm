@@ -44,8 +44,12 @@
 }
 
 - (RACSignal *)executeSearchSignal {
-    return [[self.services getImgurSearchService]
-            imgurSearchSignal:nil];
+    return [[[self.services getImgurSearchService]
+            imgurSearchSignal:nil] doNext:^(id results) {
+        
+        self.results = results;
+        
+    }];
 }
 
 @end
