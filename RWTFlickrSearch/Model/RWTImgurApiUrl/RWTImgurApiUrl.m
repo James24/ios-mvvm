@@ -36,7 +36,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 }
 
 - (void)setSection:(RWTImgurApiRequestSectionType)section {
-    self.section = section;
+    _section = section;
 }
 
 #pragma mark - Private methods
