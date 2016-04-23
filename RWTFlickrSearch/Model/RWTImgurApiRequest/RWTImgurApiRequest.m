@@ -8,14 +8,36 @@
 
 #import "RWTImgurApiRequest.h"
 #import "AFNetworking.h"
-#import "RWTImgurImages.h"
 
 @implementation RWTImgurApiRequest
 
 NSString * const IMGUR_TOKEN = @"Client-ID de3be4116cb490b";
 
+- (RACSignal *)signalForGetWithUrl:(RWTImgurApiUrl *)url{
+    
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+       
+        [self getWithUrl:url success:^(RWTImgurImages* images) {
+            
+            [subscriber sendNext:images];
+            [subscriber sendCompleted];
+            
+        } failure:^(NSError *error) {
+            
+            [subscriber sendError:error];
+            
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            
+        }];
+        
+    }] replayLazily];
+    
+}
+
 - (void) getWithUrl:(RWTImgurApiUrl *)url
-            success:(void (^)(id))success
+            success:(void (^)(RWTImgurImages *))success
             failure:(void (^)(NSError *))failure {
     
     AFHTTPSessionManager *manager = [self getManager];
@@ -28,7 +50,7 @@ NSString * const IMGUR_TOKEN = @"Client-ID de3be4116cb490b";
              NSError *error;
              RWTImgurImages *images = [[RWTImgurImages alloc] initWithDictionary:responseObject error:&error];
              
-             NSLog(@"%@", [images.data[0] class]);
+             success(images);
              
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              

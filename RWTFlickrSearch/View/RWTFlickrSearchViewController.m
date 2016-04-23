@@ -40,9 +40,11 @@
 
     }];
     
-    [[[RWTImgurApiRequest alloc] init] getWithUrl:url success:^(id response) {
-        
-    } failure:^(NSError *error) {
+    RACSignal *requestSinal = [[[RWTImgurApiRequest alloc] init] signalForGetWithUrl:url];
+    
+    [requestSinal subscribeNext:^(id x) {
+       
+        NSLog(@"%@", x);
         
     }];
 }
