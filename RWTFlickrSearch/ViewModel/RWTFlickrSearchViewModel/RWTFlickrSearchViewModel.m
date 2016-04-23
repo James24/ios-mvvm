@@ -35,7 +35,6 @@
 }
 
 - (void)initialize {
-    self.searchText = @"search text";
     self.title = @"Imgur Gallery";
     
     self.executeSearch =
@@ -46,7 +45,7 @@
 
 - (RACSignal *)executeSearchSignal {
     return [[self.services getImgurSearchService]
-            imgurSearchSignal:self.searchText];
+            imgurSearchSignal:nil];
 }
 
 @end

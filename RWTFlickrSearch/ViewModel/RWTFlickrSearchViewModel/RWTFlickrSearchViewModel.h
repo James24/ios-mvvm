@@ -12,7 +12,6 @@
 
 @interface RWTFlickrSearchViewModel : NSObject
 
-@property (strong, nonatomic) NSString *searchText;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) RACCommand *executeSearch;
 

@@ -9,10 +9,6 @@
 
 @interface RWTFlickrSearchViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
-@property (weak, nonatomic) IBOutlet UIButton *searchButton;
-@property (weak, nonatomic) IBOutlet UITableView *searchHistoryTable;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) RWTFlickrSearchViewModel *viewModel;
 
 @end
@@ -62,7 +58,6 @@
 
 - (void)bindViewModel{
     self.title = self.viewModel.title;
-    self.searchTextField.text = self.viewModel.searchText;
     
     RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeSearch.executing;
 }
