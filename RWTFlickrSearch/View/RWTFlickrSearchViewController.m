@@ -37,7 +37,7 @@
     
     
     RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {
-        [builder setSection:RWTImgurApiRequestSectionTypeTop];
+
     }];
     
     [[[RWTImgurApiRequest alloc] init] getWithUrl:url success:^(id response) {

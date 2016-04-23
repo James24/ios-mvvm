@@ -25,9 +25,10 @@ NSString * const IMGUR_TOKEN = @"Client-ID de3be4116cb490b";
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              
-             RWTImgurImages *images = [[RWTImgurImages alloc] initWithDictionary:responseObject error:nil];
+             NSError *error;
+             RWTImgurImages *images = [[RWTImgurImages alloc] initWithDictionary:responseObject error:&error];
              
-             NSLog(@"%@", images.data[0]);
+             NSLog(@"%@", [images.data[0] class]);
              
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              
