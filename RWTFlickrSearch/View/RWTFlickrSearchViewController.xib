@@ -14,7 +14,24 @@
         <view contentMode="scaleToFill" id="1">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YYG-e8-NxX">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dPQ-9R-8iF">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="YYG-e8-NxX" secondAttribute="trailing" id="3xd-SF-IaY"/>
+                <constraint firstItem="YYG-e8-NxX" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="5z3-Tl-WSn"/>
+                <constraint firstAttribute="bottom" secondItem="YYG-e8-NxX" secondAttribute="bottom" id="KBm-Lu-fZc"/>
+                <constraint firstItem="YYG-e8-NxX" firstAttribute="top" secondItem="1" secondAttribute="top" id="x7E-Xf-iWZ"/>
+            </constraints>
         </view>
     </objects>
 </document>

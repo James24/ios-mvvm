@@ -253,6 +253,7 @@
 				DD5F7F111CC9896A00B9CDC3 /* Protocols */,
 				DD5F7F1A1CC99B2100B9CDC3 /* RWTImgurApiRequest */,
 				DD5F7F201CCBD54F00B9CDC3 /* RWTImgurApiUrl */,
+				DD5F7F251CCBE8F400B9CDC3 /* RWTImgurImage */,
 				DD5F7F081CC9877800B9CDC3 /* RWTImgurSearchImpl */,
 			);
 			path = Model;
@@ -292,6 +293,13 @@
 				DD5F7F221CCBD56300B9CDC3 /* RWTImgurApiUrl.m */,
 			);
 			path = RWTImgurApiUrl;
+			sourceTree = "<group>";
+		};
+		DD5F7F251CCBE8F400B9CDC3 /* RWTImgurImage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RWTImgurImage;
 			sourceTree = "<group>";
 		};
 		E727A00DFADFDE1C79BBF450 /* Pods */ = {
