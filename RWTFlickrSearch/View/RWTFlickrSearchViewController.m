@@ -39,7 +39,12 @@
     
     [self.viewModel.executeSearch execute:nil];
     
-    [[[RWTImgurApiRequest alloc] init] getWithParams:nil success:^(id response) {
+    
+    RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {
+        
+    }];
+    
+    [[[RWTImgurApiRequest alloc] init] getWithUrl:url success:^(id response) {
         
     } failure:^(NSError *error) {
         

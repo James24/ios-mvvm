@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RWTImgurApiUrl.h"
+
 
 @interface RWTImgurApiRequest : NSObject
 
-- (void) getWithParams:(NSDictionary *)params
-               success:(void (^)(id))success
-               failure:(void (^)(NSError *))failure;
+- (void) getWithUrl:(RWTImgurApiUrl *)url
+            success:(void (^)(id))success
+            failure:(void (^)(NSError *))failure;
 @end

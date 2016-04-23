@@ -11,18 +11,16 @@
 
 @implementation RWTImgurApiRequest
 
-NSString * const IMGUR_URL = @"https://api.imgur.com/3/gallery/hot/viral/0.json";
 NSString * const IMGUR_TOKEN = @"Client-ID de3be4116cb490b";
 
-
-- (void) getWithParams:(NSDictionary *)params
-               success:(void (^)(id))success
-               failure:(void (^)(NSError *))failure {
+- (void) getWithUrl:(RWTImgurApiUrl *)url
+            success:(void (^)(id))success
+            failure:(void (^)(NSError *))failure {
     
     AFHTTPSessionManager *manager = [self getManager];
     
-    [manager GET:IMGUR_URL
-      parameters:params
+    [manager GET:[url getFullUrl]
+      parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              
