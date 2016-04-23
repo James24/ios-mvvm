@@ -5,6 +5,7 @@
 
 #import "RWTFlickrSearchViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "RWTImgurApiRequest.h"
 
 @interface RWTFlickrSearchViewController ()
 
@@ -37,6 +38,17 @@
     [self bindViewModel];
     
     [self.viewModel.executeSearch execute:nil];
+    
+    
+    RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {
+        [builder setSection:RWTImgurApiRequestSectionTypeTop];
+    }];
+    
+    [[[RWTImgurApiRequest alloc] init] getWithUrl:url success:^(id response) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - Private methods
