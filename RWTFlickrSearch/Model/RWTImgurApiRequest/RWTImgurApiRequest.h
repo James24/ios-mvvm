@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RWTImgurApiUrl.h"
+#import "RWTImgurImages.h"
 
 
 @interface RWTImgurApiRequest : NSObject
 
+- (RACSignal *)signalForGetWithUrl:(RWTImgurApiUrl *)url;
+
 - (void) getWithUrl:(RWTImgurApiUrl *)url
-            success:(void (^)(id))success
+            success:(void (^)(RWTImgurImages *))success
             failure:(void (^)(NSError *))failure;
 @end

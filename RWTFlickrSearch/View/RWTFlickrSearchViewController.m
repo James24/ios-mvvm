@@ -6,14 +6,15 @@
 #import "RWTFlickrSearchViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RWTImgurApiRequest.h"
+#import "RWTCollectionViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface RWTFlickrSearchViewController ()
+ static NSString *cellIdentifier = @"cvCell";
 
-@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
-@property (weak, nonatomic) IBOutlet UIButton *searchButton;
-@property (weak, nonatomic) IBOutlet UITableView *searchHistoryTable;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@interface RWTFlickrSearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
 @property (weak, nonatomic) RWTFlickrSearchViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -37,18 +38,10 @@
     
     [self bindViewModel];
     
-    [self.viewModel.executeSearch execute:nil];
-    
-    
-    RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {
-        [builder setSection:RWTImgurApiRequestSectionTypeTop];
+    [[self.viewModel.executeSearch execute:nil] subscribeCompleted:^{
+        [self.collectionView reloadData];
     }];
     
-    [[[RWTImgurApiRequest alloc] init] getWithUrl:url success:^(id response) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
 }
 
 #pragma mark - Private methods
@@ -58,13 +51,30 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+ 
+    [self.collectionView registerNib:[UINib nibWithNibName:@"RWTCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellIdentifier];
 }
 
 - (void)bindViewModel{
     self.title = self.viewModel.title;
-    self.searchTextField.text = self.viewModel.searchText;
     
     RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeSearch.executing;
+}
+
+#pragma mark - UICollectionView
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    RWTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
+    
+    [cell.imageView setImageWithURL:[[NSURL alloc] initWithString:item.imageUrl]];
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [self.viewModel.results.data count];
 }
 
 @end
