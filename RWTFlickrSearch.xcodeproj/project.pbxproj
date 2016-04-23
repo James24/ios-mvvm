@@ -41,6 +41,8 @@
 		DD5F7F1E1CC99E1900B9CDC3 /* RWTImgurApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F1C1CC99E1900B9CDC3 /* RWTImgurApiRequest.m */; };
 		DD5F7F231CCBD56300B9CDC3 /* RWTImgurApiUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F221CCBD56300B9CDC3 /* RWTImgurApiUrl.m */; };
 		DD5F7F241CCBD56300B9CDC3 /* RWTImgurApiUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F221CCBD56300B9CDC3 /* RWTImgurApiUrl.m */; };
+		DD5F7F2D1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F2C1CCBEA0500B9CDC3 /* RWTImgurImages.m */; };
+		DD5F7F2E1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F7F2C1CCBEA0500B9CDC3 /* RWTImgurImages.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		DD5F7F1C1CC99E1900B9CDC3 /* RWTImgurApiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurApiRequest.m; sourceTree = "<group>"; };
 		DD5F7F211CCBD56300B9CDC3 /* RWTImgurApiUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurApiUrl.h; sourceTree = "<group>"; };
 		DD5F7F221CCBD56300B9CDC3 /* RWTImgurApiUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurApiUrl.m; sourceTree = "<group>"; };
+		DD5F7F2B1CCBEA0500B9CDC3 /* RWTImgurImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurImages.h; sourceTree = "<group>"; };
+		DD5F7F2C1CCBEA0500B9CDC3 /* RWTImgurImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurImages.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,7 +257,7 @@
 				DD5F7F111CC9896A00B9CDC3 /* Protocols */,
 				DD5F7F1A1CC99B2100B9CDC3 /* RWTImgurApiRequest */,
 				DD5F7F201CCBD54F00B9CDC3 /* RWTImgurApiUrl */,
-				DD5F7F251CCBE8F400B9CDC3 /* RWTImgurImage */,
+				DD5F7F2A1CCBEA0500B9CDC3 /* RWTImgurImages */,
 				DD5F7F081CC9877800B9CDC3 /* RWTImgurSearchImpl */,
 			);
 			path = Model;
@@ -295,11 +299,13 @@
 			path = RWTImgurApiUrl;
 			sourceTree = "<group>";
 		};
-		DD5F7F251CCBE8F400B9CDC3 /* RWTImgurImage */ = {
+		DD5F7F2A1CCBEA0500B9CDC3 /* RWTImgurImages */ = {
 			isa = PBXGroup;
 			children = (
+				DD5F7F2B1CCBEA0500B9CDC3 /* RWTImgurImages.h */,
+				DD5F7F2C1CCBEA0500B9CDC3 /* RWTImgurImages.m */,
 			);
-			path = RWTImgurImage;
+			path = RWTImgurImages;
 			sourceTree = "<group>";
 		};
 		E727A00DFADFDE1C79BBF450 /* Pods */ = {
@@ -471,6 +477,7 @@
 				72E401B7192C03AB00354806 /* RWTRecentSearchItemTableViewCell.m in Sources */,
 				72E4017C192BFFCE00354806 /* main.m in Sources */,
 				72E401B9192C03AB00354806 /* RWTSearchResultsViewController.m in Sources */,
+				DD5F7F2D1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */,
 				728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */,
 				72E401B4192C03AB00354806 /* RWTFlickrSearchViewController.m in Sources */,
 				DD5F7F0F1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */,
@@ -488,6 +495,7 @@
 				72E4019B192BFFCE00354806 /* RWTFlickrSearchTests.m in Sources */,
 				DD5F7F1E1CC99E1900B9CDC3 /* RWTImgurApiRequest.m in Sources */,
 				DD5F7F241CCBD56300B9CDC3 /* RWTImgurApiUrl.m in Sources */,
+				DD5F7F2E1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */,
 				DD5F7F101CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */,
 				DD5F7F051CC9755A00B9CDC3 /* RWTFlickrSearchViewModel.m in Sources */,
 			);

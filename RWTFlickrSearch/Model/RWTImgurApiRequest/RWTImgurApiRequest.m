@@ -8,6 +8,7 @@
 
 #import "RWTImgurApiRequest.h"
 #import "AFNetworking.h"
+#import "RWTImgurImages.h"
 
 @implementation RWTImgurApiRequest
 
@@ -24,7 +25,9 @@ NSString * const IMGUR_TOKEN = @"Client-ID de3be4116cb490b";
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              
-             NSLog(@"%@", responseObject);
+             RWTImgurImages *images = [[RWTImgurImages alloc] initWithDictionary:responseObject error:nil];
+             
+             NSLog(@"%@", images.data[0]);
              
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              
