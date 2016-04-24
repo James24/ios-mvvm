@@ -10,6 +10,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RWTViewModelServices.h"
 #import "RWTImgurImages.h"
+#import "RWTImgurApiUrl.h"
 
 @interface RWTFlickrSearchViewModel : NSObject
 
@@ -17,8 +18,11 @@
 @property (strong, nonatomic) RACCommand *executeSearch;
 @property (strong, nonatomic) RWTImgurImages *results;
 
+@property (nonatomic) RWTImgurApiRequestSectionType sectionType;
+@property (nonatomic) BOOL showViral;
+
 - (instancetype) initWithServices:(id<RWTViewModelServices>)services;
 
-- (RACSignal *)executeSearchSignal;
-
+- (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType;
+- (RACSignal *)signalForSettingShowViral:(BOOL)showViral;
 @end

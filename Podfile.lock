@@ -14,8 +14,8 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - IQKeyboardManager (4.0.2)
   - JSONModel (1.2.0)
-  - LinqToObjectiveC (2.0.0)
   - ReactiveCocoa (2.1.8):
     - ReactiveCocoa/Core (= 2.1.8)
     - ReactiveCocoa/no-arc (= 2.1.8)
@@ -25,14 +25,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
-  - JSONModel
-  - LinqToObjectiveC (= 2.0.0)
+  - IQKeyboardManager
+  - JSONModel (= 1.2.0)
   - ReactiveCocoa (= 2.1.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  IQKeyboardManager: 2341089c4ae25fa2fa82ce356a259fcd267dc6b6
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
-  LinqToObjectiveC: 768f98c62d5b57cb6bdb7ab869e33d0a7a2da29c
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
 
 COCOAPODS: 0.39.0

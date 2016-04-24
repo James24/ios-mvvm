@@ -36,6 +36,7 @@
 
 - (void)initialize {
     self.title = @"Imgur Gallery";
+    self.showViral = YES;
     
     self.executeSearch =
     [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -43,9 +44,31 @@
     }];
 }
 
+#pragma mark - Public Methods
+- (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType {
+    
+    if (sectionType != self.sectionType) {
+        _sectionType = sectionType;
+        return [self.executeSearch execute:nil];
+    }
+
+    return nil;
+    
+}
+
+- (RACSignal *)signalForSettingShowViral:(BOOL)showViral {
+    if (showViral != self.showViral) {
+        _showViral = showViral;
+        return [self.executeSearch execute:nil];
+    }
+    
+    return nil;
+}
+
 - (RACSignal *)executeSearchSignal {
     return [[[self.services getImgurSearchService]
-            imgurSearchSignal:nil] doNext:^(id results) {
+             imgurSearchSignal:self.sectionType
+                showViral:self.showViral] doNext:^(id results) {
         
         self.results = results;
         

@@ -10,5 +10,6 @@
 
 @interface RWTCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *imageDescriptionLabel;
 
 @end
