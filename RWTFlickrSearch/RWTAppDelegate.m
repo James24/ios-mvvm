@@ -24,8 +24,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.navigationController = [UINavigationController new];
-  self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
-  [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
   
   UIViewController *viewController = [self createInitialViewController];
   [self.navigationController pushViewController:viewController animated:NO];
