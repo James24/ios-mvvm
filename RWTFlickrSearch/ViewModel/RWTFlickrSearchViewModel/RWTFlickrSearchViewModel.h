@@ -19,9 +19,10 @@
 @property (strong, nonatomic) RWTImgurImages *results;
 
 @property (nonatomic) RWTImgurApiRequestSectionType sectionType;
+@property (nonatomic) BOOL showViral;
 
 - (instancetype) initWithServices:(id<RWTViewModelServices>)services;
 
 - (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType;
-
+- (RACSignal *)signalForSettingShowViral:(BOOL)showViral;
 @end

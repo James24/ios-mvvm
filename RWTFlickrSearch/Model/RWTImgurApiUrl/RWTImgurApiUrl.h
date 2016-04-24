@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, RWTImgurApiRequestSectionType) {
 
 @required
 - (void)setSection:(RWTImgurApiRequestSectionType)section;
+- (void)setShowViral:(BOOL)showViral;
 @end
 
 @interface RWTImgurApiUrl : NSObject <RWTImgurApiUrlBuilder>

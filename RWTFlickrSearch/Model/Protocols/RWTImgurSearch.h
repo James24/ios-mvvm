@@ -12,6 +12,7 @@
 
 @protocol RWTImgurSearch <NSObject>
 
--(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType;
+-(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType
+                      showViral:(BOOL)showViral;
 
 @end

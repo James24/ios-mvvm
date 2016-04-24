@@ -86,6 +86,14 @@
             
         }];
         
+        [RACObserve(self, filterViewModel.showViral) subscribeNext:^(id showViral) {
+            
+            [[self.viewModel signalForSettingShowViral:self.filterViewModel.showViral] subscribeNext:^(id x) {
+                [self.collectionView reloadData];
+            }];
+            
+        }];
+        
     }
     
     return _filterViewModel;

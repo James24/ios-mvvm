@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RWTFlickrFilterViewController">
             <connections>
                 <outlet property="sectionTextField" destination="S3a-Qq-apq" id="xri-2D-7bz"/>
+                <outlet property="showViralSwitch" destination="0Dp-fq-xvk" id="AJe-pb-YyN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

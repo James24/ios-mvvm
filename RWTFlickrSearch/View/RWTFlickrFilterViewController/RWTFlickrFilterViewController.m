@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) RWTFlickrFilterViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UITextField *sectionTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *showViralSwitch;
 
 @end
 
@@ -32,6 +33,7 @@
     
     [self setupController];
     [self setupSectionPicker];
+    [self setupSwitch];
     [self bindViewModel];
 }
 
@@ -48,9 +50,11 @@
     pickerView.delegate = self;
     pickerView.showsSelectionIndicator = YES;
     
-
     self.sectionTextField.inputView = pickerView;
-    
+}
+
+- (void)setupSwitch{
+    [self.showViralSwitch setOn:self.viewModel.showViral animated:YES];
 }
 
 - (void)bindViewModel{
@@ -66,6 +70,7 @@
 - (void)applyFilter{
     
     [self performSectionSelectionChange];
+    [self performViralSelectionChange];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -78,6 +83,11 @@
     if (newSection.sectionType != self.viewModel.selectedSection.sectionType){
         self.viewModel.selectedSection = newSection;
     }
+}
+
+- (void)performViralSelectionChange{
+    
+    self.viewModel.showViral = self.showViralSwitch.isOn;
     
 }
 

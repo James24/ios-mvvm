@@ -17,7 +17,7 @@
         
         self.title = @"Filter Images";
         self.selectedSection = [[RWTImgurSection alloc] initWithSectionType:RWTImgurApiRequestSectionTypeHot];
-        
+        self.showViral = YES;
     }
     
     return self;

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) RWTImgurSection *selectedSection;
 @property (nonatomic) NSInteger lastSectionIndexSelected;
+@property (nonatomic) BOOL showViral;
 
 - (NSArray*)getArrayOfAllSectionTypes;
 

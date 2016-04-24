@@ -11,10 +11,13 @@
 
 @implementation RWTImgurSearchImpl
 
--(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType{
-        
+-(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType
+                      showViral:(BOOL)showViral
+{
+    
     RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {
         [builder setSection:sectionType];
+        [builder setShowViral:showViral];
     }];
     
     RACSignal *requestSinal = [[[RWTImgurApiRequest alloc] init] signalForGetWithUrl:url];

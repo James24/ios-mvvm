@@ -13,6 +13,8 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 @interface RWTImgurApiUrl()
 
 @property (nonatomic) RWTImgurApiRequestSectionType section;
+@property (nonatomic) BOOL showViral;
+
 
 @end
 
@@ -30,7 +32,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 - (NSString *)getFullUrl {
     
-    NSString *fullUrl = [NSString stringWithFormat:@"%@%@.json", IMGUR_BASEURL, [self getSectionPath]];
+    NSString *fullUrl = [NSString stringWithFormat:@"%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getShowViralParameter]];
     
     NSLog(@"FULL URL: %@", fullUrl);
     
@@ -41,7 +43,19 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
     _section = section;
 }
 
+- (void)setShowViral:(BOOL)showViral {
+    _showViral = showViral;
+}
+
 #pragma mark - Private methods
+
+- (NSString *)getShowViralParameter{
+    if (self.showViral) {
+        return @"true";
+    } else {
+        return @"false";
+    }
+}
 
 - (NSString*)getSectionPath{
     
