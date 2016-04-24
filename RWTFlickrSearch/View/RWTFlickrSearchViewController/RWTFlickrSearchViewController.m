@@ -8,6 +8,8 @@
 #import "RWTImgurApiRequest.h"
 #import "RWTCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "RWTFlickrFilterViewModel.h"
+#import "RWTFlickrFilterViewController.h"
 
  static NSString *cellIdentifier = @"cvCell";
 
@@ -15,6 +17,8 @@
 
 @property (weak, nonatomic) RWTFlickrSearchViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (strong, nonatomic) RWTFlickrFilterViewModel *filterViewModel;
 
 @end
 
@@ -64,7 +68,22 @@
 
 - (void)openFilterModal{
     
+    RWTFlickrFilterViewController *filterController = [[RWTFlickrFilterViewController alloc] initWIthViewModel:self.filterViewModel];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:filterController];
+    
+    [self presentViewController:navController animated:YES completion:nil];
+    
 }
+
+#pragma mark - Lazy instantiation
+- (RWTFlickrFilterViewModel *)filterViewModel{
+    if (!_filterViewModel) {
+        _filterViewModel = [RWTFlickrFilterViewModel new];
+    }
+    
+    return _filterViewModel;
+}
+
 
 #pragma mark - UICollectionView
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

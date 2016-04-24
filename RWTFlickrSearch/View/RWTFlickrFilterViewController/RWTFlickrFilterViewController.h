@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RWTFlickrFilterViewModel.h"
 
 @interface RWTFlickrFilterViewController : UIViewController
+
+- (instancetype)initWIthViewModel:(RWTFlickrFilterViewModel *)viewModel;
 
 @end
