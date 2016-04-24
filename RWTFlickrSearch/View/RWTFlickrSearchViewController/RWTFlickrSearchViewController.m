@@ -18,6 +18,8 @@
 @property (weak, nonatomic) RWTFlickrSearchViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property(strong, nonatomic) void(^filterTriggeredBlock)(id);
+
 @property (strong, nonatomic) RWTFlickrFilterViewModel *filterViewModel;
 
 @end
@@ -80,23 +82,30 @@
         
         [RACObserve(self, filterViewModel.selectedSection) subscribeNext:^(RWTImgurSection *newSection) {
             
-            [[self.viewModel signalForSettingSectionType:newSection.sectionType] subscribeNext:^(id x) {
-                [self.collectionView reloadData];
-            }];
+            [[self.viewModel signalForSettingSectionType:newSection.sectionType] subscribeNext:self.filterTriggeredBlock];
             
         }];
         
         [RACObserve(self, filterViewModel.showViral) subscribeNext:^(id showViral) {
             
-            [[self.viewModel signalForSettingShowViral:self.filterViewModel.showViral] subscribeNext:^(id x) {
-                [self.collectionView reloadData];
-            }];
+            [[self.viewModel signalForSettingShowViral:self.filterViewModel.showViral] subscribeNext:self.filterTriggeredBlock];
             
         }];
         
     }
     
     return _filterViewModel;
+}
+
+- (void (^)(id))filterTriggeredBlock{
+    
+    void(^block)(id) = ^(id x){
+    
+        [self.collectionView reloadData];
+        
+    };
+    
+    return block;
 }
 
 
@@ -106,8 +115,9 @@
     RWTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
-    
+        
     [cell.imageView setImageWithURL:[[NSURL alloc] initWithString:item.imageUrl]];
+    [cell.imageDescriptionLabel setText:item.title];
     
     return cell;
 }
