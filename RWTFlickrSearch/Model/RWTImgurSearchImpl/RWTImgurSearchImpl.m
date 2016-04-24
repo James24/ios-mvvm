@@ -11,10 +11,10 @@
 
 @implementation RWTImgurSearchImpl
 
--(RACSignal *)imgurSearchSignal:(NSString *)searchString{
+-(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType{
         
     RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {
-        
+        [builder setSection:sectionType];
     }];
     
     RACSignal *requestSinal = [[[RWTImgurApiRequest alloc] init] signalForGetWithUrl:url];

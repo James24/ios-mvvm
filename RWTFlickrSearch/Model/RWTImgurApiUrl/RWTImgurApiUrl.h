@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, RWTImgurApiRequestSectionType) {
     RWTImgurApiRequestSectionTypeUser
 };
 
+
 @protocol RWTImgurApiUrlBuilder <NSObject>
 
 @required

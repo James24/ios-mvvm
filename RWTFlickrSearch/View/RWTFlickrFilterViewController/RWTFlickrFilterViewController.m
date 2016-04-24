@@ -32,7 +32,10 @@
     
     [self setupController];
     [self setupSectionPicker];
+    [self bindViewModel];
 }
+
+#pragma mark - Private Methods
 
 - (void)setupController{
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelFilter)]];
@@ -47,6 +50,13 @@
     
 
     self.sectionTextField.inputView = pickerView;
+    
+}
+
+- (void)bindViewModel{
+    self.title = self.viewModel.title;
+    
+    self.sectionTextField.text = [self.viewModel.selectedSection prettyName];
 }
 
 - (void)cancelFilter{
@@ -54,7 +64,21 @@
 }
 
 - (void)applyFilter{
-    [self dismissViewControllerAnimated:YES completion:nil];    
+    
+    [self performSectionSelectionChange];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)performSectionSelectionChange{
+    
+    
+    RWTImgurSection *newSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
+    
+    if (newSection.sectionType != self.viewModel.selectedSection.sectionType){
+        self.viewModel.selectedSection = newSection;
+    }
+    
 }
 
 #pragma mark - UIPickerView
@@ -65,17 +89,23 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
-    return 3;
+    return [[self.viewModel getArrayOfAllSectionTypes] count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return @"test";
+    
+    RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
+    
+    return [section prettyName];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
-    NSLog(@"%ld",(long)row);
+    self.viewModel.lastSectionIndexSelected = row;
     
+    RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
+    
+    self.sectionTextField.text = [section prettyName];
 }
 
 @end

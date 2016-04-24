@@ -43,9 +43,22 @@
     }];
 }
 
+#pragma mark - Public Methods
+- (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType{
+    
+    if (sectionType != self.sectionType) {
+        _sectionType = sectionType;
+        
+        return [self.executeSearch execute:nil];
+    }
+    
+    return nil;
+    
+}
+
 - (RACSignal *)executeSearchSignal {
     return [[[self.services getImgurSearchService]
-            imgurSearchSignal:nil] doNext:^(id results) {
+            imgurSearchSignal:self.sectionType] doNext:^(id results) {
         
         self.results = results;
         

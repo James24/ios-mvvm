@@ -7,10 +7,11 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "RWTImgurApiUrl.h"
 @import Foundation;
 
 @protocol RWTImgurSearch <NSObject>
 
-- (RACSignal *)imgurSearchSignal:(NSString *)searchString;
+-(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType;
 
 @end

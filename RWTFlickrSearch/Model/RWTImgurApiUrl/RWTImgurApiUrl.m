@@ -32,6 +32,8 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
     
     NSString *fullUrl = [NSString stringWithFormat:@"%@%@.json", IMGUR_BASEURL, [self getSectionPath]];
     
+    NSLog(@"FULL URL: %@", fullUrl);
+    
     return fullUrl;
 }
 

@@ -10,4 +10,25 @@
 
 @implementation RWTFlickrFilterViewModel
 
+- (instancetype)init{
+    self = [super init];
+    
+    if (self) {
+        
+        self.title = @"Filter Images";
+        self.selectedSection = [[RWTImgurSection alloc] initWithSectionType:RWTImgurApiRequestSectionTypeHot];
+        
+    }
+    
+    return self;
+}
+
+- (NSArray *)getArrayOfAllSectionTypes {
+    return [RWTImgurSection getArrayOfAllSectionTypes];
+}
+
+#pragma mark - Private methods
+
+
+
 @end

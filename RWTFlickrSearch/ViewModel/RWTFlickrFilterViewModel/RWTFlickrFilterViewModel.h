@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "RWTImgurApiUrl.h"
+#import "RWTImgurSection.h"
 
 @interface RWTFlickrFilterViewModel : NSObject
 
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) RWTImgurSection *selectedSection;
+@property (nonatomic) NSInteger lastSectionIndexSelected;
 
-@property (nonatomic) RWTImgurApiRequestSectionType sectionType;
+- (NSArray*)getArrayOfAllSectionTypes;
 
 @end

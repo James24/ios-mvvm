@@ -77,6 +77,15 @@
 - (RWTFlickrFilterViewModel *)filterViewModel{
     if (!_filterViewModel) {
         _filterViewModel = [RWTFlickrFilterViewModel new];
+        
+        [RACObserve(self, filterViewModel.selectedSection) subscribeNext:^(RWTImgurSection *newSection) {
+            
+            [[self.viewModel signalForSettingSectionType:newSection.sectionType] subscribeNext:^(id x) {
+                [self.collectionView reloadData];
+            }];
+            
+        }];
+        
     }
     
     return _filterViewModel;
