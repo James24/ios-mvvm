@@ -51,9 +51,7 @@
 #pragma mark - Private methods
 
 - (void)setupViewController{
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+        
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openFilterModal)] animated:YES];
  

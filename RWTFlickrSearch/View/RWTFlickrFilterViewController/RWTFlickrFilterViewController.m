@@ -8,9 +8,10 @@
 
 #import "RWTFlickrFilterViewController.h"
 
-@interface RWTFlickrFilterViewController ()
+@interface RWTFlickrFilterViewController () <UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (weak, nonatomic) RWTFlickrFilterViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UITextField *sectionTextField;
 
 @end
 
@@ -28,8 +29,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self setupController];
+    [self setupSectionPicker];
 }
 
+- (void)setupController{
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelFilter)]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(applyFilter)]];
+}   
+
+- (void)setupSectionPicker{
+    UIPickerView* pickerView = [[UIPickerView alloc]init];
+    pickerView.dataSource = self;
+    pickerView.delegate = self;
+    pickerView.showsSelectionIndicator = YES;
+    
+
+    self.sectionTextField.inputView = pickerView;
+}
+
+- (void)cancelFilter{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)applyFilter{
+    [self dismissViewControllerAnimated:YES completion:nil];    
+}
+
+#pragma mark - UIPickerView
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return 3;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return @"test";
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    NSLog(@"%ld",(long)row);
+    
+}
 
 @end
