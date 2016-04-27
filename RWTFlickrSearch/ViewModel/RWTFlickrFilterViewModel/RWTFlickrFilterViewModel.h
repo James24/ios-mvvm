@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RWTImgurApiUrl.h"
 #import "RWTImgurSection.h"
+#import "RWTImgurViewType.h"
 
 @interface RWTFlickrFilterViewModel : NSObject
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) RWTImgurSection *selectedSection;
 @property (nonatomic) NSInteger lastSectionIndexSelected;
 @property (nonatomic) BOOL showViral;
+@property (nonatomic) RWTImgurCollectionViewLayoutType collectionViewLayoutType;
 
 - (NSArray*)getArrayOfAllSectionTypes;
 

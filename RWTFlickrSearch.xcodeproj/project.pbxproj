@@ -55,6 +55,8 @@
 		DDB4FAD11CCD855000CAFEE7 /* RWTAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4FACE1CCD855000CAFEE7 /* RWTAboutViewController.m */; };
 		DDB4FAD21CCD855000CAFEE7 /* RWTAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB4FACF1CCD855000CAFEE7 /* RWTAboutViewController.xib */; };
 		DDB4FAD31CCD855000CAFEE7 /* RWTAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB4FACF1CCD855000CAFEE7 /* RWTAboutViewController.xib */; };
+		DDB4FAD71CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */; };
+		DDB4FAD81CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,8 @@
 		DDB4FACD1CCD855000CAFEE7 /* RWTAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTAboutViewController.h; sourceTree = "<group>"; };
 		DDB4FACE1CCD855000CAFEE7 /* RWTAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTAboutViewController.m; sourceTree = "<group>"; };
 		DDB4FACF1CCD855000CAFEE7 /* RWTAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RWTAboutViewController.xib; sourceTree = "<group>"; };
+		DDB4FAD51CD044FD00CAFEE7 /* RWTImgurViewType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurViewType.h; sourceTree = "<group>"; };
+		DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurViewType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +272,7 @@
 				DD5F7F2A1CCBEA0500B9CDC3 /* RWTImgurImages */,
 				DD5F7F081CC9877800B9CDC3 /* RWTImgurSearchImpl */,
 				DDB4FAC71CCD50C400CAFEE7 /* RWTImgurSection */,
+				DDB4FAD41CD044EC00CAFEE7 /* RWTImgurViewType */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -382,6 +387,15 @@
 				DDB4FACF1CCD855000CAFEE7 /* RWTAboutViewController.xib */,
 			);
 			path = RWTAboutViewController;
+			sourceTree = "<group>";
+		};
+		DDB4FAD41CD044EC00CAFEE7 /* RWTImgurViewType */ = {
+			isa = PBXGroup;
+			children = (
+				DDB4FAD51CD044FD00CAFEE7 /* RWTImgurViewType.h */,
+				DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */,
+			);
+			path = RWTImgurViewType;
 			sourceTree = "<group>";
 		};
 		E727A00DFADFDE1C79BBF450 /* Pods */ = {
@@ -562,6 +576,7 @@
 				DDB4FAAA1CCD12E400CAFEE7 /* RWTFlickrSearchViewController.m in Sources */,
 				DD5F7F0F1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */,
 				DD5F7F231CCBD56300B9CDC3 /* RWTImgurApiUrl.m in Sources */,
+				DDB4FAD71CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */,
 				DDB4FACA1CCD50D400CAFEE7 /* RWTImgurSection.m in Sources */,
 				DDB4FAC51CCD27D900CAFEE7 /* RWTFlickrFilterViewModel.m in Sources */,
 				DD5F7F181CC994D500B9CDC3 /* RWTViewModelServicesImpl.m in Sources */,
@@ -576,6 +591,7 @@
 				DD5F7F191CC994D500B9CDC3 /* RWTViewModelServicesImpl.m in Sources */,
 				DDB4FAAB1CCD12E400CAFEE7 /* RWTFlickrSearchViewController.m in Sources */,
 				DDB4FACB1CCD50D400CAFEE7 /* RWTImgurSection.m in Sources */,
+				DDB4FAD81CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */,
 				DDB4FABA1CCD271400CAFEE7 /* RWTFlickrSearchViewModel.m in Sources */,
 				72E4019B192BFFCE00354806 /* RWTFlickrSearchTests.m in Sources */,
 				DD5F7F1E1CC99E1900B9CDC3 /* RWTImgurApiRequest.m in Sources */,

@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *showViralSwitch;
 @property (strong, nonatomic) UIPickerView *sectionPickerView;
 
+@property (weak, nonatomic) IBOutlet UITextField *viewTypeTextField;
+@property (strong, nonatomic) UIPickerView *viewTypePickerView;
+
 @end
 
 @implementation RWTFlickrFilterViewController
@@ -34,6 +37,7 @@
     
     [self setupController];
     [self setupSectionPicker];
+    [self setupViewTypePicker];
     [self setupSwitch];
     [self bindViewModel];
 }
@@ -52,6 +56,15 @@
     self.sectionPickerView.showsSelectionIndicator = YES;
     
     self.sectionTextField.inputView = self.sectionPickerView;
+}
+
+- (void)setupViewTypePicker{
+    self.viewTypePickerView = [[UIPickerView alloc]init];
+    self.viewTypePickerView.dataSource = self;
+    self.viewTypePickerView.delegate = self;
+    self.viewTypePickerView.showsSelectionIndicator = YES;
+    
+    self.viewTypeTextField.inputView = self.viewTypePickerView;
 }
 
 - (void)setupSwitch{
@@ -85,7 +98,7 @@
     
     RWTImgurSection *newSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
     
-    if (newSection.sectionType != self.viewModel.selectedSection.sectionType){
+    if (![newSection isEqual:self.viewModel.selectedSection]){
         self.viewModel.selectedSection = newSection;
     }
 }
@@ -109,18 +122,24 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     
-    RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
+    if (pickerView == self.sectionPickerView) {
+        RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
+        return [section prettyName];
+    }
     
-    return [section prettyName];
+    return @"Grid";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
-    self.viewModel.lastSectionIndexSelected = row;
-    
-    RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
-    
-    self.sectionTextField.text = [section prettyName];
+    if (pickerView == self.sectionPickerView) {
+        
+        self.viewModel.lastSectionIndexSelected = row;
+        
+        RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
+        
+        self.sectionTextField.text = [section prettyName];
+    }
 }
 
 @end

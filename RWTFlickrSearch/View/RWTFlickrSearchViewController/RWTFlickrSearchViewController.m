@@ -97,6 +97,12 @@
             
         }];
         
+        [RACObserve(self, filterViewModel.collectionViewLayoutType) subscribeNext:^(id collectionViewLayoutType) {
+            
+            NSLog(@"%@", collectionViewLayoutType);
+            
+        }];
+        
     }
     
     return _filterViewModel;

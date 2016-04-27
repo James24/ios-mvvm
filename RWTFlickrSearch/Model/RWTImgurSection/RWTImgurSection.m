@@ -8,6 +8,13 @@
 
 #import "RWTImgurSection.h"
 
+@interface RWTImgurSection()
+
+@property(strong, nonatomic) NSString *prettyName;
+@property (nonatomic) RWTImgurApiRequestSectionType sectionType;
+
+@end
+
 @implementation RWTImgurSection
 
 - (instancetype)initWithSectionType:(RWTImgurApiRequestSectionType)sectionType{
@@ -47,6 +54,13 @@
     
 }
 
+- (NSString *)prettyName {
+    return _prettyName;
+}
+
+- (RWTImgurApiRequestSectionType)sectionType{
+    return _sectionType;
+}
 
 + (NSArray*)getArrayOfAllSectionTypes{
     
@@ -64,15 +78,15 @@
     
     if (sectionType == RWTImgurApiRequestSectionTypeHot){
         
-        self.prettyName = @"Hot";
+        _prettyName = @"Hot";
         
     } else if (sectionType == RWTImgurApiRequestSectionTypeTop){
         
-        self.prettyName = @"Top";
+        _prettyName = @"Top";
         
     } else if (sectionType == RWTImgurApiRequestSectionTypeUser){
         
-        self.prettyName = @"User";
+        _prettyName = @"User";
         
     }
 }

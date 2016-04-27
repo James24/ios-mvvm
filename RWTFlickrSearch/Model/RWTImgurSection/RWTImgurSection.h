@@ -11,12 +11,11 @@
 
 @interface RWTImgurSection : NSObject
 
-@property (strong, nonatomic) NSString *prettyName;
-@property (nonatomic) RWTImgurApiRequestSectionType sectionType;
 
 + (NSArray*)getArrayOfAllSectionTypes;
 
 - (instancetype)initWithSectionType:(RWTImgurApiRequestSectionType)sectionType;
-
+- (NSString *)prettyName;
+- (RWTImgurApiRequestSectionType)sectionType;
 
 @end
