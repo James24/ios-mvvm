@@ -17,6 +17,12 @@ typedef NS_ENUM(NSInteger, RWTImgurCollectionViewLayoutType) {
 };
 
 
-@property (strong, nonatomic) NSString *prettyName;
+
+- (instancetype)initWithCollectionViewLayoutType:(RWTImgurCollectionViewLayoutType)viewType;
+- (RWTImgurCollectionViewLayoutType)viewType;
+- (NSString*)prettyName;
+
++ (NSArray*)getArrayOfAllSectionTypes;
+
 
 @end

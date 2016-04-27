@@ -54,7 +54,6 @@
     self.sectionPickerView.dataSource = self;
     self.sectionPickerView.delegate = self;
     self.sectionPickerView.showsSelectionIndicator = YES;
-    
     self.sectionTextField.inputView = self.sectionPickerView;
 }
 
@@ -63,7 +62,6 @@
     self.viewTypePickerView.dataSource = self;
     self.viewTypePickerView.delegate = self;
     self.viewTypePickerView.showsSelectionIndicator = YES;
-    
     self.viewTypeTextField.inputView = self.viewTypePickerView;
 }
 
@@ -75,10 +73,12 @@
     self.title = self.viewModel.title;
     
     self.sectionTextField.text = [self.viewModel.selectedSection prettyName];
+    int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedSection];
+    [self.sectionPickerView selectRow:sectionPickerIndexSelected inComponent:0 animated:NO];
     
-    int pickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedSection];
-
-    [self.sectionPickerView selectRow:pickerIndexSelected inComponent:0 animated:NO];
+    self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
+    int viewPickerIndexSelected = [[self.viewModel getArrayOfAllViewTypes] indexOfObject:self.viewModel.selectedViewType];
+    [self.sectionPickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
 }
 
 - (void)cancelFilter{
@@ -117,7 +117,13 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
-    return [[self.viewModel getArrayOfAllSectionTypes] count];
+    if (pickerView == self.sectionPickerView) {
+        return [[self.viewModel getArrayOfAllSectionTypes] count];
+        
+    } else {
+        return [[self.viewModel getArrayOfAllViewTypes] count];
+    }
+    
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
@@ -125,6 +131,10 @@
     if (pickerView == self.sectionPickerView) {
         RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
         return [section prettyName];
+        
+    } else {
+        RWTImgurViewType *viewType = [self.viewModel getArrayOfAllViewTypes][row];
+        return [viewType prettyName];
     }
     
     return @"Grid";

@@ -15,10 +15,12 @@
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) RWTImgurSection *selectedSection;
+@property (strong, nonatomic) RWTImgurViewType *selectedViewType;
 @property (nonatomic) NSInteger lastSectionIndexSelected;
 @property (nonatomic) BOOL showViral;
 @property (nonatomic) RWTImgurCollectionViewLayoutType collectionViewLayoutType;
 
 - (NSArray*)getArrayOfAllSectionTypes;
+- (NSArray*)getArrayOfAllViewTypes;
 
 @end
