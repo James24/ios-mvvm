@@ -13,6 +13,7 @@
 @property (weak, nonatomic) RWTFlickrFilterViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UITextField *sectionTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *showViralSwitch;
+@property (strong, nonatomic) UIPickerView *sectionPickerView;
 
 @end
 
@@ -45,12 +46,12 @@
 }   
 
 - (void)setupSectionPicker{
-    UIPickerView* pickerView = [[UIPickerView alloc]init];
-    pickerView.dataSource = self;
-    pickerView.delegate = self;
-    pickerView.showsSelectionIndicator = YES;
+    self.sectionPickerView = [[UIPickerView alloc]init];
+    self.sectionPickerView.dataSource = self;
+    self.sectionPickerView.delegate = self;
+    self.sectionPickerView.showsSelectionIndicator = YES;
     
-    self.sectionTextField.inputView = pickerView;
+    self.sectionTextField.inputView = self.sectionPickerView;
 }
 
 - (void)setupSwitch{
@@ -61,6 +62,10 @@
     self.title = self.viewModel.title;
     
     self.sectionTextField.text = [self.viewModel.selectedSection prettyName];
+    
+    int pickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedSection];
+
+    [self.sectionPickerView selectRow:pickerIndexSelected inComponent:0 animated:NO];
 }
 
 - (void)cancelFilter{

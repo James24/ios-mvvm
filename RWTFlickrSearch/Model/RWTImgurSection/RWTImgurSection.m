@@ -21,6 +21,32 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object{
+    if (self == object) {
+        return YES;
+    }
+
+    if (![object isKindOfClass:[RWTImgurSection class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToSection:(RWTImgurSection *)object];
+}
+
+- (BOOL)isEqualToSection:(RWTImgurSection *)section {
+    
+    if (!section) {
+        return NO;
+    }
+    
+    if (section.sectionType == self.sectionType) {
+        return YES;
+    } else {
+        return NO;
+    }
+    
+}
+
 
 + (NSArray*)getArrayOfAllSectionTypes{
     

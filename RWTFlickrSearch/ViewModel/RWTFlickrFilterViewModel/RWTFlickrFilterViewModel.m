@@ -15,7 +15,7 @@
     
     if (self) {
         
-        self.title = @"Filter Images";
+        self.title = @"Gallery Options";
         self.selectedSection = [[RWTImgurSection alloc] initWithSectionType:RWTImgurApiRequestSectionTypeHot];
         self.showViral = YES;
     }
