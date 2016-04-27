@@ -50,6 +50,11 @@
     
 }
 
+- (UITabBarItem *)tabBarItem {
+    UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
+    return tabBarItem;
+}
+
 #pragma mark - Private methods
 
 - (void)setupViewController{
