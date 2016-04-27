@@ -89,6 +89,7 @@
     
     [self performSectionSelectionChange];
     [self performViralSelectionChange];
+    [self performViewTypeSelectionChange];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -106,7 +107,15 @@
 - (void)performViralSelectionChange{
     
     self.viewModel.showViral = self.showViralSwitch.isOn;
+}
+
+- (void)performViewTypeSelectionChange{
     
+    RWTImgurViewType *viewType = [self.viewModel getArrayOfAllViewTypes][self.viewModel.lastViewTypeIndexSelected];
+    
+    if (![viewType isEqual:self.viewModel.selectedViewType]){
+        self.viewModel.selectedViewType = viewType;
+    }
 }
 
 #pragma mark - UIPickerView
@@ -137,7 +146,7 @@
         return [viewType prettyName];
     }
     
-    return @"Grid";
+    return @"";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
@@ -145,10 +154,14 @@
     if (pickerView == self.sectionPickerView) {
         
         self.viewModel.lastSectionIndexSelected = row;
-        
         RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
-        
         self.sectionTextField.text = [section prettyName];
+        
+    } else {
+        
+        self.viewModel.lastViewTypeIndexSelected = row;
+        RWTImgurViewType *view = [self.viewModel getArrayOfAllViewTypes][row];
+        self.viewTypeTextField.text = [view prettyName];
     }
 }
 

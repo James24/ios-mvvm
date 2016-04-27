@@ -17,6 +17,7 @@
 @property (strong, nonatomic) RWTImgurSection *selectedSection;
 @property (strong, nonatomic) RWTImgurViewType *selectedViewType;
 @property (nonatomic) NSInteger lastSectionIndexSelected;
+@property (nonatomic) NSInteger lastViewTypeIndexSelected;
 @property (nonatomic) BOOL showViral;
 @property (nonatomic) RWTImgurCollectionViewLayoutType collectionViewLayoutType;
 
