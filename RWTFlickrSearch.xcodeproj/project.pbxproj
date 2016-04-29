@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 728550B4193E52740032A754 /* CETableViewBindingHelper.m */; };
 		72E40170192BFFCE00354806 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E4016F192BFFCE00354806 /* Foundation.framework */; };
 		72E40172192BFFCE00354806 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E40171192BFFCE00354806 /* CoreGraphics.framework */; };
 		72E40174192BFFCE00354806 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E40173192BFFCE00354806 /* UIKit.framework */; };
@@ -72,9 +71,6 @@
 /* Begin PBXFileReference section */
 		37E32A0A020154E43A207144 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5208E89B5A61904535326771 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		728550B2193E52740032A754 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEReactiveView.h; sourceTree = "<group>"; };
-		728550B3193E52740032A754 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CETableViewBindingHelper.h; sourceTree = "<group>"; };
-		728550B4193E52740032A754 /* CETableViewBindingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CETableViewBindingHelper.m; sourceTree = "<group>"; };
 		72E4016C192BFFCE00354806 /* RWTFlickrSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RWTFlickrSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72E4016F192BFFCE00354806 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72E40171192BFFCE00354806 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,9 +152,6 @@
 		728550B1193E52510032A754 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				728550B2193E52740032A754 /* CEReactiveView.h */,
-				728550B3193E52740032A754 /* CETableViewBindingHelper.h */,
-				728550B4193E52740032A754 /* CETableViewBindingHelper.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -571,7 +564,6 @@
 				DDB4FABE1CCD278900CAFEE7 /* RWTFlickrFilterViewController.m in Sources */,
 				DD5F7F2D1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */,
 				DDB4FAD01CCD855000CAFEE7 /* RWTAboutViewController.m in Sources */,
-				728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */,
 				DD5F7F361CCC131000B9CDC3 /* RWTCollectionViewCell.m in Sources */,
 				DDB4FAAA1CCD12E400CAFEE7 /* RWTFlickrSearchViewController.m in Sources */,
 				DD5F7F0F1CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */,
