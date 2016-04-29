@@ -78,7 +78,7 @@
     
     self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
     int viewPickerIndexSelected = [[self.viewModel getArrayOfAllViewTypes] indexOfObject:self.viewModel.selectedViewType];
-    [self.sectionPickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
+    [self.viewTypePickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
 }
 
 - (void)cancelFilter{
