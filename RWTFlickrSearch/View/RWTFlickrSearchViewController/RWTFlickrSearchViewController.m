@@ -12,6 +12,7 @@
 #import "RWTFlickrFilterViewController.h"
 #import "RWTImgurCollectionFlowLayoutBuilder.h"
 #import "CHTCollectionViewWaterfallLayout.h"
+#import <TLYShyNavBar/TLYShyNavBarManager.h>
 
  static NSString *cellIdentifier = @"cvCell";
 
@@ -68,6 +69,8 @@
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openFilterModal)] animated:YES];
  
     [self.collectionView registerNib:[UINib nibWithNibName:@"RWTCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellIdentifier];
+    
+    self.shyNavBarManager.scrollView = self.collectionView;
 }
 
 - (void)bindViewModel{
@@ -135,8 +138,10 @@
     
     RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
     
+    // [[NSURL alloc] initWithString:item.imageUrl]
     
-    [cell.imageView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:item.imageUrl]]
+    [cell.imageView setImage:nil];
+    [cell.imageView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:item.imageUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60]
                           placeholderImage:nil
                                    success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
                                        
