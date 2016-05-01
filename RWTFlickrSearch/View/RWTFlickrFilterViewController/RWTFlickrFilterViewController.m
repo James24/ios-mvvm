@@ -89,9 +89,10 @@
     
     [self performSectionSelectionChange];
     [self performViralSelectionChange];
-    [self performViewTypeSelectionChange];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self performViewTypeSelectionChange];
+    }];
 }
 
 - (void)performSectionSelectionChange{

@@ -11,4 +11,8 @@
 
 @interface RWTImgurCollectionFlowLayoutBuilder : NSObject
 
+- (instancetype)initWithViewType:(RWTImgurCollectionViewLayoutType)viewType;
+
+- (UICollectionViewFlowLayout*)build;
+
 @end
