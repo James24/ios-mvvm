@@ -15,8 +15,9 @@
     
     if (self) {
         
-        self.title = @"Filter Images";
+        self.title = @"Gallery Options";
         self.selectedSection = [[RWTImgurSection alloc] initWithSectionType:RWTImgurApiRequestSectionTypeHot];
+        self.selectedViewType = [[RWTImgurViewType alloc] initWithCollectionViewLayoutType:RWTImgurCollectionViewLayoutTypeGrid];
         self.showViral = YES;
     }
     
@@ -25,6 +26,10 @@
 
 - (NSArray *)getArrayOfAllSectionTypes {
     return [RWTImgurSection getArrayOfAllSectionTypes];
+}
+
+- (NSArray *)getArrayOfAllViewTypes{
+    return [RWTImgurViewType getArrayOfAllSectionTypes];
 }
 
 #pragma mark - Private methods

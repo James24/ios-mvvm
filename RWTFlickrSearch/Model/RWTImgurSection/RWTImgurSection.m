@@ -8,6 +8,13 @@
 
 #import "RWTImgurSection.h"
 
+@interface RWTImgurSection()
+
+@property(strong, nonatomic) NSString *prettyName;
+@property (nonatomic) RWTImgurApiRequestSectionType sectionType;
+
+@end
+
 @implementation RWTImgurSection
 
 - (instancetype)initWithSectionType:(RWTImgurApiRequestSectionType)sectionType{
@@ -21,6 +28,39 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object{
+    if (self == object) {
+        return YES;
+    }
+
+    if (![object isKindOfClass:[RWTImgurSection class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToSection:(RWTImgurSection *)object];
+}
+
+- (BOOL)isEqualToSection:(RWTImgurSection *)section {
+    
+    if (!section) {
+        return NO;
+    }
+    
+    if (section.sectionType == self.sectionType) {
+        return YES;
+    } else {
+        return NO;
+    }
+    
+}
+
+- (NSString *)prettyName {
+    return _prettyName;
+}
+
+- (RWTImgurApiRequestSectionType)sectionType{
+    return _sectionType;
+}
 
 + (NSArray*)getArrayOfAllSectionTypes{
     
@@ -38,15 +78,15 @@
     
     if (sectionType == RWTImgurApiRequestSectionTypeHot){
         
-        self.prettyName = @"Hot";
+        _prettyName = @"Hot";
         
     } else if (sectionType == RWTImgurApiRequestSectionTypeTop){
         
-        self.prettyName = @"Top";
+        _prettyName = @"Top";
         
     } else if (sectionType == RWTImgurApiRequestSectionTypeUser){
         
-        self.prettyName = @"User";
+        _prettyName = @"User";
         
     }
 }

@@ -10,10 +10,12 @@
 #import "UIImageView+AFNetworking.h"
 #import "RWTFlickrFilterViewModel.h"
 #import "RWTFlickrFilterViewController.h"
+#import "RWTImgurCollectionFlowLayoutBuilder.h"
+#import "CHTCollectionViewWaterfallLayout.h"
 
  static NSString *cellIdentifier = @"cvCell";
 
-@interface RWTFlickrSearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface RWTFlickrSearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate, CHTCollectionViewDelegateWaterfallLayout>
 
 @property (weak, nonatomic) RWTFlickrSearchViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -21,6 +23,8 @@
 @property(strong, nonatomic) void(^filterTriggeredBlock)(id);
 
 @property (strong, nonatomic) RWTFlickrFilterViewModel *filterViewModel;
+
+@property (strong, nonatomic) NSCache *imageSizesCache;
 
 @end
 
@@ -32,6 +36,7 @@
     
     if (self) {
         self.viewModel = viewModel;
+        self.imageSizesCache = [[NSCache alloc] init];
     }
     
     return self;
@@ -69,6 +74,15 @@
     self.title = self.viewModel.title;
     
     RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeSearch.executing;
+    
+    [RACObserve(self, filterViewModel.selectedViewType) subscribeNext:^(RWTImgurViewType* collectionViewLayoutType) {
+        
+        RWTImgurCollectionFlowLayoutBuilder *builder = [[RWTImgurCollectionFlowLayoutBuilder alloc] initWithViewType:collectionViewLayoutType.viewType];
+        
+        [self.collectionView setCollectionViewLayout:[builder build] animated:YES completion:^(BOOL finished) {
+        }];
+        
+    }];
 }
 
 - (void)openFilterModal{
@@ -120,8 +134,22 @@
     RWTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
+    
+    
+    [cell.imageView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:item.imageUrl]]
+                          placeholderImage:nil
+                                   success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+                                       
+                                       [cell.imageView setImage:image];
+                                       
+                                       NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
+                                       [self.imageSizesCache setObject:sizeObj forKey:@(indexPath.row)];
         
-    [cell.imageView setImageWithURL:[[NSURL alloc] initWithString:item.imageUrl]];
+                                   }
+                                   failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+        
+                                   }];
+    
     [cell.imageDescriptionLabel setText:item.title];
     
     return cell;
@@ -129,6 +157,38 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return [self.viewModel.results.data count];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (self.filterViewModel.selectedViewType.viewType == RWTImgurCollectionViewLayoutTypeGrid){
+    
+        return CGSizeMake(100, 100);
+        
+    } else if (self.filterViewModel.selectedViewType.viewType == RWTImgurCollectionViewLayoutTypeList){
+        
+        CGRect frame = [[UIScreen mainScreen] bounds];
+        
+        return CGSizeMake(frame.size.width, frame.size.width);
+
+    }
+    
+    
+    if ( ![self.imageSizesCache objectForKey:@(indexPath.row)]) {
+        
+        return CGSizeMake(100, 100);
+
+    } else {
+        
+        NSValue *value = [self.imageSizesCache objectForKey:@(indexPath.row)];
+        
+        return [value CGSizeValue];
+        
+    }
+
+
+
+    
 }
 
 @end
