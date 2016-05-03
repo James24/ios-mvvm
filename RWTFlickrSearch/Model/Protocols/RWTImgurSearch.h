@@ -8,11 +8,14 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RWTImgurApiUrl.h"
+#import "RWTImgurWindow.h"
+
 @import Foundation;
 
 @protocol RWTImgurSearch <NSObject>
 
 -(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType
-                      showViral:(BOOL)showViral;
+                      showViral:(BOOL)showViral
+                     windowType:(RWTImgurWindowType)windowType;
 
 @end

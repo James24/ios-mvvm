@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RWTImgurWindow.h"
 
 typedef NS_ENUM(NSInteger, RWTImgurApiRequestSectionType) {
     RWTImgurApiRequestSectionTypeHot,
@@ -20,6 +21,7 @@ typedef NS_ENUM(NSInteger, RWTImgurApiRequestSectionType) {
 @required
 - (void)setSection:(RWTImgurApiRequestSectionType)section;
 - (void)setShowViral:(BOOL)showViral;
+- (void)setWindow:(RWTImgurWindowType)windowType;
 @end
 
 @interface RWTImgurApiUrl : NSObject <RWTImgurApiUrlBuilder>

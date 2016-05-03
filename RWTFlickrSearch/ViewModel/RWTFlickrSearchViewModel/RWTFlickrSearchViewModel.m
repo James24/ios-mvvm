@@ -37,6 +37,7 @@
 - (void)initialize {
     self.title = @"Imgur Gallery";
     self.showViral = YES;
+    self.windowType = RWTImgurWindowTypeNone;
     
     self.executeSearch =
     [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -44,11 +45,19 @@
     }];
 }
 
+- (void)setSectionType:(RWTImgurApiRequestSectionType)sectionType{
+    _sectionType = sectionType;
+    
+    if (_sectionType != RWTImgurApiRequestSectionTypeTop) {
+        _windowType = RWTImgurWindowTypeNone;
+    }
+}
+
 #pragma mark - Public Methods
 - (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType {
     
     if (sectionType != self.sectionType) {
-        _sectionType = sectionType;
+        [self setSectionType:sectionType];
         return [self.executeSearch execute:nil];
     }
 
@@ -67,15 +76,23 @@
 
 - (RACSignal *)signalForSettingWindowType:(RWTImgurWindowType)windowType{
     
-    _windowType = windowType;
-    return [self.executeSearch execute:nil];
+    if (_windowType != windowType) {
+    
+        _windowType = windowType;
+        return [self.executeSearch execute:nil];
+    }
+    
+    return nil;
 }
 
 
 - (RACSignal *)executeSearchSignal {
     return [[[self.services getImgurSearchService]
              imgurSearchSignal:self.sectionType
-                showViral:self.showViral] doNext:^(id results) {
+             showViral:self.showViral
+             windowType:self.windowType]
+            
+            doNext:^(id results) {
         
         self.results = results;
         

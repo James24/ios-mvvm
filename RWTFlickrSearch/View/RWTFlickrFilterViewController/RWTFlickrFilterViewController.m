@@ -98,6 +98,7 @@
     if (self.viewModel.selectedWindow) {
         self.windowTextField.text = [self.viewModel.selectedWindow prettyName];
         int windowPickerIndexSelected = [[self.viewModel getArrayOfAllWindowTypes] indexOfObject:self.viewModel.selectedWindow];
+        self.viewModel.lastWindowTypeIndexSelected = windowPickerIndexSelected;
         [self.windowPickerView selectRow:windowPickerIndexSelected inComponent:0 animated:NO];
         
     } else {
@@ -148,7 +149,7 @@
         
         self.viewModel.selectedWindow = newWindow;
         
-    } else {
+    } else if (![self.windowTextField isEnabled]){
         
         self.viewModel.selectedWindow = nil;
         
@@ -190,9 +191,17 @@
     if (pickerView == self.sectionPickerView) {
         return [[self.viewModel getArrayOfAllSectionTypes] count];
         
-    } else {
+    } else if (pickerView == self.viewTypePickerView){
+        
         return [[self.viewModel getArrayOfAllViewTypes] count];
+        
+    } else if (pickerView == self.windowPickerView){
+        
+        return [[self.viewModel getArrayOfAllWindowTypes] count];
+        
     }
+    
+    return 0;
     
 }
 
