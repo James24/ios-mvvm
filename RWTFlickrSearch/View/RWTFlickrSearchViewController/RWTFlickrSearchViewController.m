@@ -86,6 +86,20 @@
         }];
         
     }];
+    
+    [RACObserve(self, filterViewModel.selectedWindow) subscribeNext:^(RWTImgurWindow* windowType) {
+        
+        if (!windowType) {
+            
+            [[self.viewModel signalForSettingWindowType:RWTImgurWindowTypeNone] subscribeNext:self.filterTriggeredBlock];
+            
+        } else {
+            
+            [[self.viewModel signalForSettingWindowType:windowType.windowType] subscribeNext:self.filterTriggeredBlock];
+            
+        }
+        
+    }];
 }
 
 - (void)openFilterModal{

@@ -88,6 +88,7 @@
     
     self.sectionTextField.text = [self.viewModel.selectedSection prettyName];
     int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedSection];
+    self.viewModel.lastSectionIndexSelected = sectionPickerIndexSelected;
     [self.sectionPickerView selectRow:sectionPickerIndexSelected inComponent:0 animated:NO];
     
     self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
@@ -104,6 +105,23 @@
         [self.windowPickerView selectRow:0 inComponent:0 animated:NO];
         self.windowTextField.text = [[self.viewModel getArrayOfAllWindowTypes][0] prettyName];
     }
+    
+    
+    [RACObserve(self, viewModel.lastSectionIndexSelected) subscribeNext:^(NSNumber *x) {
+        
+        NSInteger arrayIndex = [x intValue];
+        
+        if ([[[self.viewModel getArrayOfAllSectionTypes] objectAtIndex:arrayIndex] sectionType] == RWTImgurApiRequestSectionTypeTop) {
+            
+            self.windowTextField.enabled = YES;
+            
+        } else {
+            
+            self.windowTextField.enabled = NO;
+            
+        }
+        
+    }];
 
 }
 
@@ -115,14 +133,30 @@
     
     [self performSectionSelectionChange];
     [self performViralSelectionChange];
+    [self performWindowSelectionChange];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performViewTypeSelectionChange];
     }];
 }
 
-- (void)performSectionSelectionChange{
+- (void)performWindowSelectionChange{
     
+    RWTImgurWindow *newWindow = [self.viewModel getArrayOfAllWindowTypes][self.viewModel.lastWindowTypeIndexSelected];
+    
+    if ([self.windowTextField isEnabled] && ![newWindow isEqual:self.viewModel.selectedWindow]) {
+        
+        self.viewModel.selectedWindow = newWindow;
+        
+    } else {
+        
+        self.viewModel.selectedWindow = nil;
+        
+    }
+    
+}
+
+- (void)performSectionSelectionChange{
     
     RWTImgurSection *newSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
     

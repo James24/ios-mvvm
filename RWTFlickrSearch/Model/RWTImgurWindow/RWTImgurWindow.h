@@ -15,7 +15,8 @@ typedef NS_ENUM(NSInteger, RWTImgurWindowType) {
     RWTImgurWindowTypeWeek,
     RWTImgurWindowTypeMonth,
     RWTImgurWindowTypeYear,
-    RWTImgurWindowTypeAll
+    RWTImgurWindowTypeAll,
+    RWTImgurWindowTypeNone
 };
 
 - (instancetype)initWithWindowType:(RWTImgurWindowType)windowType;

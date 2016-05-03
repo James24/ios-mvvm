@@ -65,6 +65,13 @@
     return nil;
 }
 
+- (RACSignal *)signalForSettingWindowType:(RWTImgurWindowType)windowType{
+    
+    _windowType = windowType;
+    return [self.executeSearch execute:nil];
+}
+
+
 - (RACSignal *)executeSearchSignal {
     return [[[self.services getImgurSearchService]
              imgurSearchSignal:self.sectionType
