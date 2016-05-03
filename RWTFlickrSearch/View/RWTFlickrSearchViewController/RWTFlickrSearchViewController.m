@@ -137,9 +137,7 @@
     RWTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
-    
-    // [[NSURL alloc] initWithString:item.imageUrl]
-    
+        
     [cell.imageView setImage:nil];
     [cell.imageView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:item.imageUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60]
                           placeholderImage:nil

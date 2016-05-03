@@ -7,16 +7,21 @@
 //
 
 #import "RWTFlickrFilterViewController.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface RWTFlickrFilterViewController () <UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (weak, nonatomic) RWTFlickrFilterViewModel *viewModel;
-@property (weak, nonatomic) IBOutlet UITextField *sectionTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *showViralSwitch;
+
+@property (weak, nonatomic) IBOutlet UITextField *sectionTextField;
 @property (strong, nonatomic) UIPickerView *sectionPickerView;
 
 @property (weak, nonatomic) IBOutlet UITextField *viewTypeTextField;
 @property (strong, nonatomic) UIPickerView *viewTypePickerView;
+
+@property (weak, nonatomic) IBOutlet UITextField *windowTextField;
+@property (strong, nonatomic) UIPickerView *windowPickerView;
 
 @end
 
@@ -38,6 +43,7 @@
     [self setupController];
     [self setupSectionPicker];
     [self setupViewTypePicker];
+    [self setupWindowPickerView];
     [self setupSwitch];
     [self bindViewModel];
 }
@@ -65,6 +71,14 @@
     self.viewTypeTextField.inputView = self.viewTypePickerView;
 }
 
+- (void)setupWindowPickerView{
+    self.windowPickerView = [[UIPickerView alloc]init];
+    self.windowPickerView.dataSource = self;
+    self.windowPickerView.delegate = self;
+    self.windowPickerView.showsSelectionIndicator = YES;
+    self.windowTextField.inputView = self.windowPickerView;
+}
+
 - (void)setupSwitch{
     [self.showViralSwitch setOn:self.viewModel.showViral animated:YES];
 }
@@ -79,6 +93,18 @@
     self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
     int viewPickerIndexSelected = [[self.viewModel getArrayOfAllViewTypes] indexOfObject:self.viewModel.selectedViewType];
     [self.viewTypePickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
+    
+    if (self.viewModel.selectedWindow) {
+        self.windowTextField.text = [self.viewModel.selectedWindow prettyName];
+        int windowPickerIndexSelected = [[self.viewModel getArrayOfAllWindowTypes] indexOfObject:self.viewModel.selectedWindow];
+        [self.windowPickerView selectRow:windowPickerIndexSelected inComponent:0 animated:NO];
+        
+    } else {
+        
+        [self.windowPickerView selectRow:0 inComponent:0 animated:NO];
+        self.windowTextField.text = [[self.viewModel getArrayOfAllWindowTypes][0] prettyName];
+    }
+
 }
 
 - (void)cancelFilter{
@@ -139,12 +165,20 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     
     if (pickerView == self.sectionPickerView) {
+        
         RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
         return [section prettyName];
         
-    } else {
+    } else if (pickerView == self.viewTypePickerView){
+        
         RWTImgurViewType *viewType = [self.viewModel getArrayOfAllViewTypes][row];
         return [viewType prettyName];
+        
+    } else if (pickerView == self.windowPickerView){
+        
+        RWTImgurWindow *windowType = [self.viewModel getArrayOfAllWindowTypes][row];
+        return [windowType prettyName];
+        
     }
     
     return @"";
@@ -158,11 +192,18 @@
         RWTImgurSection *section = [self.viewModel getArrayOfAllSectionTypes][row];
         self.sectionTextField.text = [section prettyName];
         
-    } else {
+    } else if (pickerView == self.viewTypePickerView){
         
         self.viewModel.lastViewTypeIndexSelected = row;
         RWTImgurViewType *view = [self.viewModel getArrayOfAllViewTypes][row];
         self.viewTypeTextField.text = [view prettyName];
+        
+    } else if (pickerView == self.windowPickerView){
+
+        self.viewModel.lastWindowTypeIndexSelected = row;
+        RWTImgurWindow *windowType = [self.viewModel getArrayOfAllWindowTypes][row];
+        self.windowTextField.text = [windowType prettyName];
+        
     }
 }
 

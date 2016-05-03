@@ -22,4 +22,6 @@ typedef NS_ENUM(NSInteger, RWTImgurWindowType) {
 - (RWTImgurWindowType)windowType;
 - (NSString*)prettyName;
 
++ (NSArray*)getArrayOfAllWindowTypes;
+
 @end
