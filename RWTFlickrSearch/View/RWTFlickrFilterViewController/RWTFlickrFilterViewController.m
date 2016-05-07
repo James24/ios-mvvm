@@ -23,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *windowTextField;
 @property (strong, nonatomic) UIPickerView *windowPickerView;
 
+@property (weak, nonatomic) IBOutlet UITextField *sortTextField;
+@property (strong, nonatomic) UIPickerView *sortPickerView;
+
+
 @end
 
 @implementation RWTFlickrFilterViewController
@@ -44,6 +48,7 @@
     [self setupSectionPicker];
     [self setupViewTypePicker];
     [self setupWindowPickerView];
+    [self setupSortPickerView];
     [self setupSwitch];
     [self bindViewModel];
 }
@@ -61,6 +66,11 @@
     self.sectionPickerView.delegate = self;
     self.sectionPickerView.showsSelectionIndicator = YES;
     self.sectionTextField.inputView = self.sectionPickerView;
+    
+    self.sectionTextField.text = [self.viewModel.selectedFilterOptions.selectedSection prettyName];
+    int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedFilterOptions.selectedSection];
+    self.viewModel.lastSectionIndexSelected = sectionPickerIndexSelected;
+    [self.sectionPickerView selectRow:sectionPickerIndexSelected inComponent:0 animated:NO];
 }
 
 - (void)setupViewTypePicker{
@@ -69,6 +79,11 @@
     self.viewTypePickerView.delegate = self;
     self.viewTypePickerView.showsSelectionIndicator = YES;
     self.viewTypeTextField.inputView = self.viewTypePickerView;
+    
+    self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
+    int viewPickerIndexSelected = [[self.viewModel getArrayOfAllViewTypes] indexOfObject:self.viewModel.selectedViewType];
+    [self.viewTypePickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
+
 }
 
 - (void)setupWindowPickerView{
@@ -79,6 +94,14 @@
     self.windowTextField.inputView = self.windowPickerView;
 }
 
+- (void)setupSortPickerView{
+    self.sortPickerView = [[UIPickerView alloc]init];
+    self.sortPickerView.dataSource = self;
+    self.sortPickerView.delegate = self;
+    self.sortPickerView.showsSelectionIndicator = YES;
+    self.sortTextField.inputView = self.sortPickerView;
+}
+
 - (void)setupSwitch{
     [self.showViralSwitch setOn:self.viewModel.selectedFilterOptions.showViral animated:YES];
 }
@@ -86,14 +109,8 @@
 - (void)bindViewModel{
     self.title = self.viewModel.title;
     
-    self.sectionTextField.text = [self.viewModel.selectedFilterOptions.selectedSection prettyName];
-    int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedFilterOptions.selectedSection];
-    self.viewModel.lastSectionIndexSelected = sectionPickerIndexSelected;
-    [self.sectionPickerView selectRow:sectionPickerIndexSelected inComponent:0 animated:NO];
     
-    self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
-    int viewPickerIndexSelected = [[self.viewModel getArrayOfAllViewTypes] indexOfObject:self.viewModel.selectedViewType];
-    [self.viewTypePickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
+    
     
     if (self.viewModel.selectedWindow) {
         self.windowTextField.text = [self.viewModel.selectedWindow prettyName];
@@ -190,6 +207,12 @@
         
         return [[self.viewModel getArrayOfAllWindowTypes] count];
         
+    } else if (pickerView == self.sortPickerView) {
+        
+        BOOL hasSelectedUserSection = self.viewModel.selectedFilterOptions.selectedSection.sectionType == RWTImgurApiRequestSectionTypeUser;
+        
+        return [[self.viewModel getArrayOfAllSortTypes:hasSelectedUserSection] count];
+        
     }
     
     return 0;
@@ -213,6 +236,12 @@
         RWTImgurWindow *windowType = [self.viewModel getArrayOfAllWindowTypes][row];
         return [windowType prettyName];
         
+    } else if (pickerView == self.sortPickerView) {
+       
+        BOOL hasSelectedUserSection = self.viewModel.selectedFilterOptions.selectedSection.sectionType == RWTImgurApiRequestSectionTypeUser;
+        
+        return [[self.viewModel getArrayOfAllSortTypes:hasSelectedUserSection][row] prettyName];
+
     }
     
     return @"";

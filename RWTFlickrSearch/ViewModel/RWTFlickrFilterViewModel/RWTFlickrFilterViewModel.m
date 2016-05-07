@@ -37,8 +37,11 @@
     return [RWTImgurWindow getArrayOfAllWindowTypes];
 }
 
-#pragma mark - Private methods
-
+- (NSArray *)getArrayOfAllSortTypes:(BOOL)isUserSection{
+    
+    return [RWTImgurSort getArrayOfAllSortTypes:isUserSection];
+    
+}
 
 
 @end
