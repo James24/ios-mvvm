@@ -8,12 +8,14 @@
 
 #import "RWTImgurSearchImpl.h"
 #import "RWTImgurApiRequest.h"
+#import "RWTImgurSort.h"
 
 @implementation RWTImgurSearchImpl
 
 -(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType
                       showViral:(BOOL)showViral
                      windowType:(RWTImgurWindowType)windowType
+                       sortType:(RWTImgurSortType)sortType
 {
     
     RWTImgurApiUrl *url = [RWTImgurApiUrl urlWithBlock:^(id<RWTImgurApiUrlBuilder> builder) {

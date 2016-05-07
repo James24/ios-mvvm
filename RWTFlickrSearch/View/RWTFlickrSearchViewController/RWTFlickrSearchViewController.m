@@ -91,7 +91,8 @@
         
         [[self.viewModel signalForSettingSectionType:options.selectedSection.sectionType
                                            showViral:options.showViral
-                                          windowType:options.selectedWindow.windowType] subscribeNext:self.filterTriggeredBlock];
+                                          windowType:options.selectedWindow.windowType
+                                            sortType:options.selectedSort.sortType] subscribeNext:self.filterTriggeredBlock];
         
     }];
 

@@ -11,6 +11,10 @@
 @interface RWTFlickrSearchViewModel ()
 
 @property (nonatomic, weak) id<RWTViewModelServices> services;
+@property (nonatomic) RWTImgurApiRequestSectionType sectionType;
+@property (nonatomic) RWTImgurWindowType windowType;
+@property (nonatomic) RWTImgurSortType sortType;
+@property (nonatomic) BOOL showViral;
 
 @end
 
@@ -57,10 +61,11 @@
 - (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType
                                  showViral:(BOOL)showViral
                                 windowType:(RWTImgurWindowType)windowType
+                                  sortType:(RWTImgurSortType)sortType
 {
     _showViral = showViral;
-    
     _windowType = windowType;
+    _sortType = sortType;
     
     [self setSectionType:sectionType];
     
@@ -72,7 +77,8 @@
     return [[[self.services getImgurSearchService]
              imgurSearchSignal:self.sectionType
              showViral:self.showViral
-             windowType:self.windowType]
+             windowType:self.windowType
+             sortType:self.sortType]
             
             doNext:^(id results) {
         

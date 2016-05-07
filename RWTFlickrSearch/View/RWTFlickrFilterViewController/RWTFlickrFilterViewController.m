@@ -146,6 +146,7 @@
         if (userHasSelectedAnySectionButUSer && userHasSelectedRisingSortOption) {
             
             self.sortTextField.text = [[[RWTImgurSort alloc] initWithSortType:RWTImgurSortTypeViral] prettyName];
+            self.viewModel.lastSortTypeIndexSelected = 0;
             [self.sortPickerView selectRow:0 inComponent:0 animated:NO];
             
             [self.sortPickerView reloadAllComponents];
@@ -176,6 +177,7 @@
     RWTImgurFilterOptions *filterOptions = [[RWTImgurFilterOptions alloc] init];
     filterOptions.selectedSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
     filterOptions.showViral = self.showViralSwitch.isOn;
+    filterOptions.selectedSort = [self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]][self.viewModel.lastSortTypeIndexSelected];
     
     RWTImgurWindow *newWindow = [self.viewModel getArrayOfAllWindowTypes][self.viewModel.lastWindowTypeIndexSelected];
     

@@ -14,6 +14,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 @property (nonatomic) RWTImgurApiRequestSectionType section;
 @property (nonatomic) RWTImgurWindowType window;
+@property (nonatomic) RWTImgurSortType sort;
 @property (nonatomic) BOOL showViral;
 
 
@@ -50,6 +51,10 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 - (void)setWindow:(RWTImgurWindowType)window{
     _window = window;
+}
+
+- (void)setSort:(RWTImgurSortType)sort{
+    _sort = sort;
 }
 
 #pragma mark - Private methods

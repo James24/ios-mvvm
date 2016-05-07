@@ -9,6 +9,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RWTImgurApiUrl.h"
 #import "RWTImgurWindow.h"
+#import "RWTImgurSort.h"
 
 @import Foundation;
 
@@ -16,6 +17,7 @@
 
 -(RACSignal *)imgurSearchSignal:(RWTImgurApiRequestSectionType)sectionType
                       showViral:(BOOL)showViral
-                     windowType:(RWTImgurWindowType)windowType;
+                     windowType:(RWTImgurWindowType)windowType
+                       sortType:(RWTImgurSortType)sortType;
 
 @end
