@@ -28,6 +28,8 @@
 @property (nonatomic) NSInteger lastSectionIndexSelected;
 @property (nonatomic) NSInteger lastViewTypeIndexSelected;
 @property (nonatomic) NSInteger lastWindowTypeIndexSelected;
+@property (nonatomic) NSInteger lastSortTypeIndexSelected;
+
 
 - (NSArray *)getArrayOfAllSectionTypes;
 - (NSArray *)getArrayOfAllViewTypes;

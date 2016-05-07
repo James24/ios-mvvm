@@ -140,7 +140,16 @@
             
         }
         
-        [self.sortPickerView reloadAllComponents];
+        BOOL userHasSelectedAnySectionButUSer = [[[self.viewModel getArrayOfAllSectionTypes] objectAtIndex:arrayIndex] sectionType] != RWTImgurApiRequestSectionTypeUser;
+        BOOL userHasSelectedRisingSortOption = [[self.viewModel getArrayOfAllSortTypes:YES][self.viewModel.lastSortTypeIndexSelected] sortType] == RWTImgurSortTypeRising;
+        
+        if (userHasSelectedAnySectionButUSer && userHasSelectedRisingSortOption) {
+            
+            self.sortTextField.text = [[[RWTImgurSort alloc] initWithSortType:RWTImgurSortTypeViral] prettyName];
+            [self.sortPickerView selectRow:0 inComponent:0 animated:NO];
+            
+            [self.sortPickerView reloadAllComponents];
+        }
     }];
     
 
@@ -277,6 +286,12 @@
         self.viewModel.lastWindowTypeIndexSelected = row;
         RWTImgurWindow *windowType = [self.viewModel getArrayOfAllWindowTypes][row];
         self.windowTextField.text = [windowType prettyName];
+        
+    } else if (pickerView == self.sortPickerView){
+        
+        self.viewModel.lastSortTypeIndexSelected = row;
+        RWTImgurSort *sort = [self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]][row];
+        self.sortTextField.text = [sort prettyName];
         
     }
 }
