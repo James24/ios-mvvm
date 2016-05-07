@@ -56,38 +56,17 @@
 #pragma mark - Public Methods
 - (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType
                                  showViral:(BOOL)showViral
+                                windowType:(RWTImgurWindowType)windowType
 {
     _showViral = showViral;
     
-    if (sectionType != self.sectionType) {
-        [self setSectionType:sectionType];
-        return [self.executeSearch execute:nil];
-    }
-
-    return nil;
+    _windowType = windowType;
+    
+    [self setSectionType:sectionType];
+    
+    return [self.executeSearch execute:nil];
     
 }
-
-- (RACSignal *)signalForSettingShowViral:(BOOL)showViral {
-    if (showViral != self.showViral) {
-        _showViral = showViral;
-        return [self.executeSearch execute:nil];
-    }
-    
-    return nil;
-}
-
-- (RACSignal *)signalForSettingWindowType:(RWTImgurWindowType)windowType{
-    
-    if (_windowType != windowType) {
-    
-        _windowType = windowType;
-        return [self.executeSearch execute:nil];
-    }
-    
-    return nil;
-}
-
 
 - (RACSignal *)executeSearchSignal {
     return [[[self.services getImgurSearchService]

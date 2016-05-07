@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "RWTImgurSection.h"
 #import "RWTImgurViewType.h"
+#import "RWTImgurWindow.h"
 
 @interface RWTImgurFilterOptions : NSObject
 
 @property (strong, nonatomic) RWTImgurSection *selectedSection;
+@property (strong, nonatomic) RWTImgurWindow *selectedWindow;
 @property (nonatomic) BOOL showViral;
 
 @end

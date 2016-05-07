@@ -87,24 +87,11 @@
         
     }];
     
-    [RACObserve(self, filterViewModel.selectedWindow) subscribeNext:^(RWTImgurWindow* windowType) {
-        
-        if (!windowType) {
-            
-            [[self.viewModel signalForSettingWindowType:RWTImgurWindowTypeNone] subscribeNext:self.filterTriggeredBlock];
-            
-        } else {
-            
-            [[self.viewModel signalForSettingWindowType:windowType.windowType] subscribeNext:self.filterTriggeredBlock];
-            
-        }
-        
-    }];
-    
     [RACObserve(self, filterViewModel.selectedFilterOptions) subscribeNext:^(RWTImgurFilterOptions *options) {
         
         [[self.viewModel signalForSettingSectionType:options.selectedSection.sectionType
-                                           showViral:options.showViral] subscribeNext:self.filterTriggeredBlock];
+                                           showViral:options.showViral
+                                          windowType:options.selectedWindow.windowType] subscribeNext:self.filterTriggeredBlock];
         
     }];
 

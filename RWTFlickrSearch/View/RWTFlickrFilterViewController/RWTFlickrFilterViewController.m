@@ -80,14 +80,14 @@
 }
 
 - (void)setupSwitch{
-    [self.showViralSwitch setOn:self.viewModel.showViral animated:YES];
+    [self.showViralSwitch setOn:self.viewModel.selectedFilterOptions.showViral animated:YES];
 }
 
 - (void)bindViewModel{
     self.title = self.viewModel.title;
     
-    self.sectionTextField.text = [self.viewModel.selectedSection prettyName];
-    int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedSection];
+    self.sectionTextField.text = [self.viewModel.selectedFilterOptions.selectedSection prettyName];
+    int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedFilterOptions.selectedSection];
     self.viewModel.lastSectionIndexSelected = sectionPickerIndexSelected;
     [self.sectionPickerView selectRow:sectionPickerIndexSelected inComponent:0 animated:NO];
     
@@ -132,12 +132,8 @@
 
 - (void)applyFilter{
     
-//    [self performSectionSelectionChange];
-//    [self performViralSelectionChange];
     [self performFilterChanges];
     
-    
-    [self performWindowSelectionChange];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performViewTypeSelectionChange];
@@ -150,38 +146,20 @@
     filterOptions.selectedSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
     filterOptions.showViral = self.showViralSwitch.isOn;
     
-    self.viewModel.selectedFilterOptions = filterOptions;
-    
-}
-
-- (void)performWindowSelectionChange{
-    
     RWTImgurWindow *newWindow = [self.viewModel getArrayOfAllWindowTypes][self.viewModel.lastWindowTypeIndexSelected];
     
-    if ([self.windowTextField isEnabled] && ![newWindow isEqual:self.viewModel.selectedWindow]) {
+    if ([self.windowTextField isEnabled]) {
         
-        self.viewModel.selectedWindow = newWindow;
+        filterOptions.selectedWindow = newWindow;
         
     } else if (![self.windowTextField isEnabled]){
         
-        self.viewModel.selectedWindow = nil;
+        filterOptions.selectedWindow = [[RWTImgurWindow alloc] initWithWindowType:RWTImgurWindowTypeNone];
         
     }
     
-}
-
-- (void)performSectionSelectionChange{
+    self.viewModel.selectedFilterOptions = filterOptions;
     
-    RWTImgurSection *newSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
-    
-    if (![newSection isEqual:self.viewModel.selectedSection]){
-        self.viewModel.selectedSection = newSection;
-    }
-}
-
-- (void)performViralSelectionChange{
-    
-    self.viewModel.showViral = self.showViralSwitch.isOn;
 }
 
 - (void)performViewTypeSelectionChange{

@@ -16,6 +16,7 @@
     
     if (self) {
         self.selectedSection = [[RWTImgurSection alloc] initWithSectionType:RWTImgurApiRequestSectionTypeHot];
+        self.selectedWindow = [[RWTImgurWindow alloc] initWithWindowType:RWTImgurWindowTypeNone];
         self.showViral = YES;
     }
     

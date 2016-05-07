@@ -18,9 +18,8 @@
 @property (strong, nonatomic) NSString *title;
 
 
-@property (strong, nonatomic) RWTImgurSection *selectedSection;
 @property (strong, nonatomic) RWTImgurViewType *selectedViewType;
-@property (nonatomic) BOOL showViral;
+
 @property (strong, nonatomic) RWTImgurFilterOptions *selectedFilterOptions;
 
 
