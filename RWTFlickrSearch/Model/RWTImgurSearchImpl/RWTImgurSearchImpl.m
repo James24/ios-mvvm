@@ -22,6 +22,7 @@
         [builder setSection:sectionType];
         [builder setShowViral:showViral];
         [builder setWindow:windowType];
+        [builder setSort:sortType];
     }];
     
     RACSignal *requestSinal = [[[RWTImgurApiRequest alloc] init] signalForGetWithUrl:url];

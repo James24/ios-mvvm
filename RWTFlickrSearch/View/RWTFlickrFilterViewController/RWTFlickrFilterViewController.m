@@ -262,7 +262,7 @@
         
     } else if (pickerView == self.sortPickerView) {
         
-        return [[self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]][row] prettyName];
+        return [[self.viewModel getArrayOfAllSortTypes:YES][row] prettyName];
 
     }
     

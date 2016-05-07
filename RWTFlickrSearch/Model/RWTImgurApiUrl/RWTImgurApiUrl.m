@@ -34,7 +34,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 - (NSString *)getFullUrl {
     
-    NSString *fullUrl = [NSString stringWithFormat:@"%@%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getWindowParameter], [self getShowViralParameter]];
+    NSString *fullUrl = [NSString stringWithFormat:@"%@%@%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getSortParameter], [self getWindowParameter], [self getShowViralParameter]];
     
     NSLog(@"FULL URL: %@", fullUrl);
     
@@ -58,7 +58,26 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 }
 
 #pragma mark - Private methods
-- (NSString*)getWindowParameter{
+- (NSString *)getSortParameter{
+    switch (self.sort) {
+        case RWTImgurSortTypeViral:
+            return @"/viral";
+            break;
+        case RWTImgurSortTypeTop:
+            return @"/top";
+            break;
+        case RWTImgurSortTypeTime:
+            return @"/time";
+            break;
+        case RWTImgurSortTypeRising:
+            return @"/rising";
+        default:
+            return @"";
+            break;
+    }
+}
+
+- (NSString *)getWindowParameter{
     switch (self.window) {
         case RWTImgurWindowTypeDay:
             return @"/day";
