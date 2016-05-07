@@ -13,6 +13,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 @interface RWTImgurApiUrl()
 
 @property (nonatomic) RWTImgurApiRequestSectionType section;
+@property (nonatomic) RWTImgurWindowType window;
 @property (nonatomic) BOOL showViral;
 
 
@@ -32,7 +33,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 - (NSString *)getFullUrl {
     
-    NSString *fullUrl = [NSString stringWithFormat:@"%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getShowViralParameter]];
+    NSString *fullUrl = [NSString stringWithFormat:@"%@%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getWindowParameter], [self getShowViralParameter]];
     
     NSLog(@"FULL URL: %@", fullUrl);
     
@@ -47,7 +48,39 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
     _showViral = showViral;
 }
 
+- (void)setWindow:(RWTImgurWindowType)window{
+    _window = window;
+}
+
 #pragma mark - Private methods
+- (NSString*)getWindowParameter{
+    switch (self.window) {
+        case RWTImgurWindowTypeDay:
+            return @"/day";
+            break;
+            
+        case RWTImgurWindowTypeWeek:
+            return @"/week";
+            break;
+            
+        case RWTImgurWindowTypeMonth:
+            return @"/month";
+            break;
+            
+        case RWTImgurWindowTypeYear:
+            return @"/year";
+            break;
+            
+        case RWTImgurWindowTypeAll:
+            return @"/all";
+            break;
+            
+        default:
+            return @"";
+            break;
+    }
+}
+
 
 - (NSString *)getShowViralParameter{
     if (self.showViral) {

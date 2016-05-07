@@ -15,7 +15,7 @@
 ## Milestone 2
 - [x] Allow to switch between list / grid / staggered grid view
 - [ ] Allow to specify window and sort parameters
-- [ ] Hide/show the action bar when scrolling the list
+- [x] Hide/show the action bar when scrolling the list
 - [ ] Handle screen orientation changed
 
 ## Milestone 3
