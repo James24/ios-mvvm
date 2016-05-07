@@ -100,6 +100,10 @@
     self.sortPickerView.delegate = self;
     self.sortPickerView.showsSelectionIndicator = YES;
     self.sortTextField.inputView = self.sortPickerView;
+    
+    self.sortTextField.text = [self.viewModel.selectedFilterOptions.selectedSort prettyName];
+    int sortPickerIndexSelected = [[self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]] indexOfObject:self.viewModel.selectedFilterOptions.selectedSort];
+    [self.sortPickerView selectRow:sortPickerIndexSelected inComponent:0 animated:NO];
 }
 
 - (void)setupSwitch{
@@ -108,9 +112,6 @@
 
 - (void)bindViewModel{
     self.title = self.viewModel.title;
-    
-    
-    
     
     if (self.viewModel.selectedWindow) {
         self.windowTextField.text = [self.viewModel.selectedWindow prettyName];
@@ -139,9 +140,13 @@
             
         }
         
+        [self.sortPickerView reloadAllComponents];
     }];
+    
 
 }
+
+
 
 - (void)cancelFilter{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -188,6 +193,16 @@
     }
 }
 
+- (BOOL)userHasSelectedUserSection{
+    
+    int indexSelected = self.viewModel.lastSectionIndexSelected;
+    
+    RWTImgurSection *sectionSelected = [self.viewModel getArrayOfAllSectionTypes][indexSelected];
+    
+    return sectionSelected.sectionType == RWTImgurApiRequestSectionTypeUser;
+    
+}
+
 #pragma mark - UIPickerView
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -209,9 +224,7 @@
         
     } else if (pickerView == self.sortPickerView) {
         
-        BOOL hasSelectedUserSection = self.viewModel.selectedFilterOptions.selectedSection.sectionType == RWTImgurApiRequestSectionTypeUser;
-        
-        return [[self.viewModel getArrayOfAllSortTypes:hasSelectedUserSection] count];
+        return [[self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]] count];
         
     }
     
@@ -237,10 +250,8 @@
         return [windowType prettyName];
         
     } else if (pickerView == self.sortPickerView) {
-       
-        BOOL hasSelectedUserSection = self.viewModel.selectedFilterOptions.selectedSection.sectionType == RWTImgurApiRequestSectionTypeUser;
         
-        return [[self.viewModel getArrayOfAllSortTypes:hasSelectedUserSection][row] prettyName];
+        return [[self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]][row] prettyName];
 
     }
     
