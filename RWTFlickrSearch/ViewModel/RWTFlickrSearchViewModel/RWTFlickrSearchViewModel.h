@@ -26,7 +26,9 @@
 
 - (instancetype) initWithServices:(id<RWTViewModelServices>)services;
 
-- (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType;
-- (RACSignal *)signalForSettingShowViral:(BOOL)showViral;
+- (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType
+                                 showViral:(BOOL)showViral;
+
+
 - (RACSignal *)signalForSettingWindowType:(RWTImgurWindowType)windowType;
 @end

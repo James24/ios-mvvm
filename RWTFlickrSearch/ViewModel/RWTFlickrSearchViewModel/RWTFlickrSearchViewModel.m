@@ -54,7 +54,10 @@
 }
 
 #pragma mark - Public Methods
-- (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType {
+- (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType
+                                 showViral:(BOOL)showViral
+{
+    _showViral = showViral;
     
     if (sectionType != self.sectionType) {
         [self setSectionType:sectionType];

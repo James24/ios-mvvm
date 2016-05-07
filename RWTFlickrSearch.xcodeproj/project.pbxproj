@@ -60,6 +60,8 @@
 		DDB4FAD31CCD855000CAFEE7 /* RWTAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB4FACF1CCD855000CAFEE7 /* RWTAboutViewController.xib */; };
 		DDB4FAD71CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */; };
 		DDB4FAD81CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */; };
+		DDEFA4531CDE59490072561B /* RWTImgurFilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */; };
+		DDEFA4541CDE59490072561B /* RWTImgurFilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,8 @@
 		DDB4FACF1CCD855000CAFEE7 /* RWTAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RWTAboutViewController.xib; sourceTree = "<group>"; };
 		DDB4FAD51CD044FD00CAFEE7 /* RWTImgurViewType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurViewType.h; sourceTree = "<group>"; };
 		DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurViewType.m; sourceTree = "<group>"; };
+		DDEFA4511CDE59490072561B /* RWTImgurFilterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurFilterOptions.h; sourceTree = "<group>"; };
+		DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurFilterOptions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +275,7 @@
 				DD5F7F111CC9896A00B9CDC3 /* Protocols */,
 				DD5F7F1A1CC99B2100B9CDC3 /* RWTImgurApiRequest */,
 				DD5F7F201CCBD54F00B9CDC3 /* RWTImgurApiUrl */,
+				DDEFA4501CDE592B0072561B /* RWTImgurFilterOptions */,
 				DD5F7F2A1CCBEA0500B9CDC3 /* RWTImgurImages */,
 				DD5F7F081CC9877800B9CDC3 /* RWTImgurSearchImpl */,
 				DDB4FAC71CCD50C400CAFEE7 /* RWTImgurSection */,
@@ -417,6 +422,15 @@
 				DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */,
 			);
 			path = RWTImgurViewType;
+			sourceTree = "<group>";
+		};
+		DDEFA4501CDE592B0072561B /* RWTImgurFilterOptions */ = {
+			isa = PBXGroup;
+			children = (
+				DDEFA4511CDE59490072561B /* RWTImgurFilterOptions.h */,
+				DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */,
+			);
+			path = RWTImgurFilterOptions;
 			sourceTree = "<group>";
 		};
 		E727A00DFADFDE1C79BBF450 /* Pods */ = {
@@ -589,6 +603,7 @@
 				72E40180192BFFCE00354806 /* RWTAppDelegate.m in Sources */,
 				DD5F7F1D1CC99E1900B9CDC3 /* RWTImgurApiRequest.m in Sources */,
 				72E4017C192BFFCE00354806 /* main.m in Sources */,
+				DDEFA4531CDE59490072561B /* RWTImgurFilterOptions.m in Sources */,
 				DDB4FABE1CCD278900CAFEE7 /* RWTFlickrFilterViewController.m in Sources */,
 				DD5F7F2D1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */,
 				DDB4FAD01CCD855000CAFEE7 /* RWTAboutViewController.m in Sources */,
@@ -613,6 +628,7 @@
 				DD5F7F191CC994D500B9CDC3 /* RWTViewModelServicesImpl.m in Sources */,
 				DDB4FAAB1CCD12E400CAFEE7 /* RWTFlickrSearchViewController.m in Sources */,
 				DDB4FACB1CCD50D400CAFEE7 /* RWTImgurSection.m in Sources */,
+				DDEFA4541CDE59490072561B /* RWTImgurFilterOptions.m in Sources */,
 				DDB4FAD81CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */,
 				DD8F88271CD6836600A0B62C /* RWTImgurWindow.m in Sources */,
 				DDB4FABA1CCD271400CAFEE7 /* RWTFlickrSearchViewModel.m in Sources */,

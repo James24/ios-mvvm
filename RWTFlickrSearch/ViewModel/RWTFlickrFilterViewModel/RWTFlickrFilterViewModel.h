@@ -11,17 +11,23 @@
 #import "RWTImgurSection.h"
 #import "RWTImgurViewType.h"
 #import "RWTImgurWindow.h"
+#import "RWTImgurFilterOptions.h"
 
 @interface RWTFlickrFilterViewModel : NSObject
 
 @property (strong, nonatomic) NSString *title;
+
+
 @property (strong, nonatomic) RWTImgurSection *selectedSection;
 @property (strong, nonatomic) RWTImgurViewType *selectedViewType;
+@property (nonatomic) BOOL showViral;
+@property (strong, nonatomic) RWTImgurFilterOptions *selectedFilterOptions;
+
+
 @property (strong, nonatomic) RWTImgurWindow *selectedWindow;
 @property (nonatomic) NSInteger lastSectionIndexSelected;
 @property (nonatomic) NSInteger lastViewTypeIndexSelected;
 @property (nonatomic) NSInteger lastWindowTypeIndexSelected;
-@property (nonatomic) BOOL showViral;
 
 - (NSArray*)getArrayOfAllSectionTypes;
 - (NSArray*)getArrayOfAllViewTypes;

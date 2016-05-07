@@ -132,13 +132,26 @@
 
 - (void)applyFilter{
     
-    [self performSectionSelectionChange];
-    [self performViralSelectionChange];
+//    [self performSectionSelectionChange];
+//    [self performViralSelectionChange];
+    [self performFilterChanges];
+    
+    
     [self performWindowSelectionChange];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performViewTypeSelectionChange];
     }];
+}
+
+- (void)performFilterChanges{
+    
+    RWTImgurFilterOptions *filterOptions = [[RWTImgurFilterOptions alloc] init];
+    filterOptions.selectedSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
+    filterOptions.showViral = self.showViralSwitch.isOn;
+    
+    self.viewModel.selectedFilterOptions = filterOptions;
+    
 }
 
 - (void)performWindowSelectionChange{

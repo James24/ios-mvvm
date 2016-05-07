@@ -100,6 +100,14 @@
         }
         
     }];
+    
+    [RACObserve(self, filterViewModel.selectedFilterOptions) subscribeNext:^(RWTImgurFilterOptions *options) {
+        
+        [[self.viewModel signalForSettingSectionType:options.selectedSection.sectionType
+                                           showViral:options.showViral] subscribeNext:self.filterTriggeredBlock];
+        
+    }];
+
 }
 
 - (void)openFilterModal{
@@ -115,19 +123,6 @@
 - (RWTFlickrFilterViewModel *)filterViewModel{
     if (!_filterViewModel) {
         _filterViewModel = [RWTFlickrFilterViewModel new];
-        
-        [RACObserve(self, filterViewModel.selectedSection) subscribeNext:^(RWTImgurSection *newSection) {
-            
-            [[self.viewModel signalForSettingSectionType:newSection.sectionType] subscribeNext:self.filterTriggeredBlock];
-            
-        }];
-        
-        [RACObserve(self, filterViewModel.showViral) subscribeNext:^(id showViral) {
-            
-            [[self.viewModel signalForSettingShowViral:self.filterViewModel.showViral] subscribeNext:self.filterTriggeredBlock];
-            
-        }];
-        
     }
     
     return _filterViewModel;
