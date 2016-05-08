@@ -61,6 +61,12 @@
     return tabBarItem;
 }
 
+-(void)viewWillTransitionToSize:(CGSize)size
+      withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionView reloadData];
+}
+
 #pragma mark - Private methods
 
 - (void)setupViewController{
