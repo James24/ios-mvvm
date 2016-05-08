@@ -22,4 +22,4 @@
 - [x] When clicking an image in the gallery - show its details: big image, title, description, upvotes, downvotes and score
 
 ## PLUS
-- [ ] Launch image
+- [x] Launch image
