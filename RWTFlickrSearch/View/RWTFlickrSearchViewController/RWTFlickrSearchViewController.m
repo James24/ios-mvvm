@@ -13,6 +13,7 @@
 #import "RWTImgurCollectionFlowLayoutBuilder.h"
 #import "CHTCollectionViewWaterfallLayout.h"
 #import <TLYShyNavBar/TLYShyNavBarManager.h>
+#import "RWTDetailViewController.h"
 
  static NSString *cellIdentifier = @"cvCell";
 
@@ -198,8 +199,12 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-//    RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
+    RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
     
+    RWTDetailViewModel *viewModel = [[RWTDetailViewModel alloc] initWithImageItem:item];
+    RWTDetailViewController *ctrl = [[RWTDetailViewController alloc] initWithViewModel:viewModel];
+    
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
 @end

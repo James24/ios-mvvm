@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RWTDetailViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qog-P8-caK">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ud-tK-O8E" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWC-fV-s2t" userLabel="Header View">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="Rud-0e-Sdv"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="JWC-fV-s2t" secondAttribute="bottom" id="BAc-03-RgB"/>
+                                <constraint firstItem="JWC-fV-s2t" firstAttribute="top" secondItem="1ud-tK-O8E" secondAttribute="top" id="Edj-95-GyN"/>
+                                <constraint firstAttribute="trailing" secondItem="JWC-fV-s2t" secondAttribute="trailing" id="OdR-sN-6N3"/>
+                                <constraint firstItem="JWC-fV-s2t" firstAttribute="leading" secondItem="1ud-tK-O8E" secondAttribute="leading" id="g8y-sN-gUN"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="1ud-tK-O8E" secondAttribute="bottom" id="0Gf-Qp-8y7"/>
+                        <constraint firstItem="1ud-tK-O8E" firstAttribute="top" secondItem="qog-P8-caK" secondAttribute="top" id="b71-ZN-NcR"/>
+                        <constraint firstItem="1ud-tK-O8E" firstAttribute="width" secondItem="qog-P8-caK" secondAttribute="width" id="fjL-hg-Scf"/>
+                        <constraint firstItem="1ud-tK-O8E" firstAttribute="leading" secondItem="qog-P8-caK" secondAttribute="leading" id="itz-uH-MGg"/>
+                        <constraint firstAttribute="trailing" secondItem="1ud-tK-O8E" secondAttribute="trailing" id="l93-0j-soJ"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="fjL-hg-Scf"/>
+                        </mask>
+                    </variation>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qog-P8-caK" secondAttribute="trailing" id="FvE-33-Uyx"/>
+                <constraint firstAttribute="bottom" secondItem="qog-P8-caK" secondAttribute="bottom" id="GFb-D2-R5A"/>
+                <constraint firstItem="qog-P8-caK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="P6a-ab-HYv"/>
+                <constraint firstItem="qog-P8-caK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QIF-o7-mVG"/>
+                <constraint firstItem="1ud-tK-O8E" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="fB1-qE-lg1"/>
+                <constraint firstItem="qog-P8-caK" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="y0T-aa-h56"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="y0T-aa-h56"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>
