@@ -16,7 +16,7 @@
 - [x] Allow to switch between list / grid / staggered grid view
 - [x] Allow to specify window and sort parameters
 - [x] Hide/show the action bar when scrolling the list
-- [ ] Handle screen orientation changed
+- [x] Handle screen orientation changed
 
 ## Milestone 3
-- [ ] When clicking an image in the gallery - show its details: big image, title, description, upvotes, downvotes and score
+- [x] When clicking an image in the gallery - show its details: big image, title, description, upvotes, downvotes and score
