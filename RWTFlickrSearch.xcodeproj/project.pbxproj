@@ -62,6 +62,8 @@
 		DDB4FAD81CD044FD00CAFEE7 /* RWTImgurViewType.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */; };
 		DDEFA4531CDE59490072561B /* RWTImgurFilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */; };
 		DDEFA4541CDE59490072561B /* RWTImgurFilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */; };
+		DDEFA4581CDE84720072561B /* RWTImgurSort.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA4571CDE84720072561B /* RWTImgurSort.m */; };
+		DDEFA4591CDE84720072561B /* RWTImgurSort.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA4571CDE84720072561B /* RWTImgurSort.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		DDB4FAD61CD044FD00CAFEE7 /* RWTImgurViewType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurViewType.m; sourceTree = "<group>"; };
 		DDEFA4511CDE59490072561B /* RWTImgurFilterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurFilterOptions.h; sourceTree = "<group>"; };
 		DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurFilterOptions.m; sourceTree = "<group>"; };
+		DDEFA4561CDE84720072561B /* RWTImgurSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTImgurSort.h; sourceTree = "<group>"; };
+		DDEFA4571CDE84720072561B /* RWTImgurSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTImgurSort.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +283,7 @@
 				DD5F7F2A1CCBEA0500B9CDC3 /* RWTImgurImages */,
 				DD5F7F081CC9877800B9CDC3 /* RWTImgurSearchImpl */,
 				DDB4FAC71CCD50C400CAFEE7 /* RWTImgurSection */,
+				DDEFA4551CDE845E0072561B /* RWTImgurSort */,
 				DDB4FAD41CD044EC00CAFEE7 /* RWTImgurViewType */,
 				DD8F88231CD6835400A0B62C /* RWTImgurWindow */,
 			);
@@ -431,6 +436,15 @@
 				DDEFA4521CDE59490072561B /* RWTImgurFilterOptions.m */,
 			);
 			path = RWTImgurFilterOptions;
+			sourceTree = "<group>";
+		};
+		DDEFA4551CDE845E0072561B /* RWTImgurSort */ = {
+			isa = PBXGroup;
+			children = (
+				DDEFA4561CDE84720072561B /* RWTImgurSort.h */,
+				DDEFA4571CDE84720072561B /* RWTImgurSort.m */,
+			);
+			path = RWTImgurSort;
 			sourceTree = "<group>";
 		};
 		E727A00DFADFDE1C79BBF450 /* Pods */ = {
@@ -603,6 +617,7 @@
 				72E40180192BFFCE00354806 /* RWTAppDelegate.m in Sources */,
 				DD5F7F1D1CC99E1900B9CDC3 /* RWTImgurApiRequest.m in Sources */,
 				72E4017C192BFFCE00354806 /* main.m in Sources */,
+				DDEFA4581CDE84720072561B /* RWTImgurSort.m in Sources */,
 				DDEFA4531CDE59490072561B /* RWTImgurFilterOptions.m in Sources */,
 				DDB4FABE1CCD278900CAFEE7 /* RWTFlickrFilterViewController.m in Sources */,
 				DD5F7F2D1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */,
@@ -637,6 +652,7 @@
 				DD5F7F241CCBD56300B9CDC3 /* RWTImgurApiUrl.m in Sources */,
 				DD5F7F2E1CCBEA0500B9CDC3 /* RWTImgurImages.m in Sources */,
 				DD5F7F101CC987AF00B9CDC3 /* RWTImgurSearchImpl.m in Sources */,
+				DDEFA4591CDE84720072561B /* RWTImgurSort.m in Sources */,
 				DDB4FAD11CCD855000CAFEE7 /* RWTAboutViewController.m in Sources */,
 				DDB4FAC61CCD27D900CAFEE7 /* RWTFlickrFilterViewModel.m in Sources */,
 				DD5F7F371CCC131000B9CDC3 /* RWTCollectionViewCell.m in Sources */,

@@ -12,6 +12,7 @@
 #import "RWTImgurViewType.h"
 #import "RWTImgurWindow.h"
 #import "RWTImgurFilterOptions.h"
+#import "RWTImgurSort.h"
 
 @interface RWTFlickrFilterViewModel : NSObject
 
@@ -27,9 +28,12 @@
 @property (nonatomic) NSInteger lastSectionIndexSelected;
 @property (nonatomic) NSInteger lastViewTypeIndexSelected;
 @property (nonatomic) NSInteger lastWindowTypeIndexSelected;
+@property (nonatomic) NSInteger lastSortTypeIndexSelected;
 
-- (NSArray*)getArrayOfAllSectionTypes;
-- (NSArray*)getArrayOfAllViewTypes;
-- (NSArray*)getArrayOfAllWindowTypes;
+
+- (NSArray *)getArrayOfAllSectionTypes;
+- (NSArray *)getArrayOfAllViewTypes;
+- (NSArray *)getArrayOfAllWindowTypes;
+- (NSArray *)getArrayOfAllSortTypes:(BOOL)isUserSection;
 
 @end

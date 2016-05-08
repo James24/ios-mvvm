@@ -23,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *windowTextField;
 @property (strong, nonatomic) UIPickerView *windowPickerView;
 
+@property (weak, nonatomic) IBOutlet UITextField *sortTextField;
+@property (strong, nonatomic) UIPickerView *sortPickerView;
+
+
 @end
 
 @implementation RWTFlickrFilterViewController
@@ -44,6 +48,7 @@
     [self setupSectionPicker];
     [self setupViewTypePicker];
     [self setupWindowPickerView];
+    [self setupSortPickerView];
     [self setupSwitch];
     [self bindViewModel];
 }
@@ -61,6 +66,11 @@
     self.sectionPickerView.delegate = self;
     self.sectionPickerView.showsSelectionIndicator = YES;
     self.sectionTextField.inputView = self.sectionPickerView;
+    
+    self.sectionTextField.text = [self.viewModel.selectedFilterOptions.selectedSection prettyName];
+    int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedFilterOptions.selectedSection];
+    self.viewModel.lastSectionIndexSelected = sectionPickerIndexSelected;
+    [self.sectionPickerView selectRow:sectionPickerIndexSelected inComponent:0 animated:NO];
 }
 
 - (void)setupViewTypePicker{
@@ -69,6 +79,11 @@
     self.viewTypePickerView.delegate = self;
     self.viewTypePickerView.showsSelectionIndicator = YES;
     self.viewTypeTextField.inputView = self.viewTypePickerView;
+    
+    self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
+    int viewPickerIndexSelected = [[self.viewModel getArrayOfAllViewTypes] indexOfObject:self.viewModel.selectedViewType];
+    [self.viewTypePickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
+
 }
 
 - (void)setupWindowPickerView{
@@ -79,21 +94,24 @@
     self.windowTextField.inputView = self.windowPickerView;
 }
 
+- (void)setupSortPickerView{
+    self.sortPickerView = [[UIPickerView alloc]init];
+    self.sortPickerView.dataSource = self;
+    self.sortPickerView.delegate = self;
+    self.sortPickerView.showsSelectionIndicator = YES;
+    self.sortTextField.inputView = self.sortPickerView;
+    
+    self.sortTextField.text = [self.viewModel.selectedFilterOptions.selectedSort prettyName];
+    int sortPickerIndexSelected = [[self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]] indexOfObject:self.viewModel.selectedFilterOptions.selectedSort];
+    [self.sortPickerView selectRow:sortPickerIndexSelected inComponent:0 animated:NO];
+}
+
 - (void)setupSwitch{
     [self.showViralSwitch setOn:self.viewModel.selectedFilterOptions.showViral animated:YES];
 }
 
 - (void)bindViewModel{
     self.title = self.viewModel.title;
-    
-    self.sectionTextField.text = [self.viewModel.selectedFilterOptions.selectedSection prettyName];
-    int sectionPickerIndexSelected = [[self.viewModel getArrayOfAllSectionTypes] indexOfObject:self.viewModel.selectedFilterOptions.selectedSection];
-    self.viewModel.lastSectionIndexSelected = sectionPickerIndexSelected;
-    [self.sectionPickerView selectRow:sectionPickerIndexSelected inComponent:0 animated:NO];
-    
-    self.viewTypeTextField.text = [self.viewModel.selectedViewType prettyName];
-    int viewPickerIndexSelected = [[self.viewModel getArrayOfAllViewTypes] indexOfObject:self.viewModel.selectedViewType];
-    [self.viewTypePickerView selectRow:viewPickerIndexSelected inComponent:0 animated:NO];
     
     if (self.viewModel.selectedWindow) {
         self.windowTextField.text = [self.viewModel.selectedWindow prettyName];
@@ -122,9 +140,23 @@
             
         }
         
+        BOOL userHasSelectedAnySectionButUSer = [[[self.viewModel getArrayOfAllSectionTypes] objectAtIndex:arrayIndex] sectionType] != RWTImgurApiRequestSectionTypeUser;
+        BOOL userHasSelectedRisingSortOption = [[self.viewModel getArrayOfAllSortTypes:YES][self.viewModel.lastSortTypeIndexSelected] sortType] == RWTImgurSortTypeRising;
+        
+        if (userHasSelectedAnySectionButUSer && userHasSelectedRisingSortOption) {
+            
+            self.sortTextField.text = [[[RWTImgurSort alloc] initWithSortType:RWTImgurSortTypeViral] prettyName];
+            self.viewModel.lastSortTypeIndexSelected = 0;
+            [self.sortPickerView selectRow:0 inComponent:0 animated:NO];
+            
+            [self.sortPickerView reloadAllComponents];
+        }
     }];
+    
 
 }
+
+
 
 - (void)cancelFilter{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -145,6 +177,7 @@
     RWTImgurFilterOptions *filterOptions = [[RWTImgurFilterOptions alloc] init];
     filterOptions.selectedSection = [self.viewModel getArrayOfAllSectionTypes][self.viewModel.lastSectionIndexSelected];
     filterOptions.showViral = self.showViralSwitch.isOn;
+    filterOptions.selectedSort = [self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]][self.viewModel.lastSortTypeIndexSelected];
     
     RWTImgurWindow *newWindow = [self.viewModel getArrayOfAllWindowTypes][self.viewModel.lastWindowTypeIndexSelected];
     
@@ -171,6 +204,16 @@
     }
 }
 
+- (BOOL)userHasSelectedUserSection{
+    
+    int indexSelected = self.viewModel.lastSectionIndexSelected;
+    
+    RWTImgurSection *sectionSelected = [self.viewModel getArrayOfAllSectionTypes][indexSelected];
+    
+    return sectionSelected.sectionType == RWTImgurApiRequestSectionTypeUser;
+    
+}
+
 #pragma mark - UIPickerView
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -189,6 +232,10 @@
     } else if (pickerView == self.windowPickerView){
         
         return [[self.viewModel getArrayOfAllWindowTypes] count];
+        
+    } else if (pickerView == self.sortPickerView) {
+        
+        return [[self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]] count];
         
     }
     
@@ -213,6 +260,10 @@
         RWTImgurWindow *windowType = [self.viewModel getArrayOfAllWindowTypes][row];
         return [windowType prettyName];
         
+    } else if (pickerView == self.sortPickerView) {
+        
+        return [[self.viewModel getArrayOfAllSortTypes:YES][row] prettyName];
+
     }
     
     return @"";
@@ -237,6 +288,12 @@
         self.viewModel.lastWindowTypeIndexSelected = row;
         RWTImgurWindow *windowType = [self.viewModel getArrayOfAllWindowTypes][row];
         self.windowTextField.text = [windowType prettyName];
+        
+    } else if (pickerView == self.sortPickerView){
+        
+        self.viewModel.lastSortTypeIndexSelected = row;
+        RWTImgurSort *sort = [self.viewModel getArrayOfAllSortTypes:[self userHasSelectedUserSection]][row];
+        self.sortTextField.text = [sort prettyName];
         
     }
 }

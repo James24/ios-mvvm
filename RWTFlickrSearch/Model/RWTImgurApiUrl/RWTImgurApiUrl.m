@@ -14,6 +14,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 @property (nonatomic) RWTImgurApiRequestSectionType section;
 @property (nonatomic) RWTImgurWindowType window;
+@property (nonatomic) RWTImgurSortType sort;
 @property (nonatomic) BOOL showViral;
 
 
@@ -33,7 +34,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 - (NSString *)getFullUrl {
     
-    NSString *fullUrl = [NSString stringWithFormat:@"%@%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getWindowParameter], [self getShowViralParameter]];
+    NSString *fullUrl = [NSString stringWithFormat:@"%@%@%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getSortParameter], [self getWindowParameter], [self getShowViralParameter]];
     
     NSLog(@"FULL URL: %@", fullUrl);
     
@@ -52,8 +53,31 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
     _window = window;
 }
 
+- (void)setSort:(RWTImgurSortType)sort{
+    _sort = sort;
+}
+
 #pragma mark - Private methods
-- (NSString*)getWindowParameter{
+- (NSString *)getSortParameter{
+    switch (self.sort) {
+        case RWTImgurSortTypeViral:
+            return @"/viral";
+            break;
+        case RWTImgurSortTypeTop:
+            return @"/top";
+            break;
+        case RWTImgurSortTypeTime:
+            return @"/time";
+            break;
+        case RWTImgurSortTypeRising:
+            return @"/rising";
+        default:
+            return @"";
+            break;
+    }
+}
+
+- (NSString *)getWindowParameter{
     switch (self.window) {
         case RWTImgurWindowTypeDay:
             return @"/day";

@@ -12,6 +12,7 @@
 #import "RWTImgurImages.h"
 #import "RWTImgurApiUrl.h"
 #import "RWTImgurWindow.h"
+#import "RWTImgurSort.h"
 
 @interface RWTFlickrSearchViewModel : NSObject
 
@@ -19,16 +20,12 @@
 @property (strong, nonatomic) RACCommand *executeSearch;
 @property (strong, nonatomic) RWTImgurImages *results;
 
-@property (nonatomic) RWTImgurApiRequestSectionType sectionType;
-@property (nonatomic) RWTImgurWindowType windowType;
-
-@property (nonatomic) BOOL showViral;
-
 - (instancetype) initWithServices:(id<RWTViewModelServices>)services;
 
 - (RACSignal *)signalForSettingSectionType:(RWTImgurApiRequestSectionType)sectionType
                                  showViral:(BOOL)showViral
-                                windowType:(RWTImgurWindowType)windowType;
+                                windowType:(RWTImgurWindowType)windowType
+                                  sortType:(RWTImgurSortType)sortType;
 
 
 @end
