@@ -143,7 +143,7 @@
                                        [cell.imageView setImage:image];
                                        
                                        NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
-                                       [self.imageSizesCache setObject:sizeObj forKey:@(indexPath.row)];
+                                       [self.imageSizesCache setObject:sizeObj forKey:item.imageUrl];
         
                                    }
                                    failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
@@ -174,13 +174,15 @@
     }
     
     
-    if ( ![self.imageSizesCache objectForKey:@(indexPath.row)]) {
+    RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
+    
+    if ( ![self.imageSizesCache objectForKey:item.imageUrl]) {
         
         return CGSizeMake(100, 100);
 
     } else {
         
-        NSValue *value = [self.imageSizesCache objectForKey:@(indexPath.row)];
+        NSValue *value = [self.imageSizesCache objectForKey:item.imageUrl];
         
         return [value CGSizeValue];
         
