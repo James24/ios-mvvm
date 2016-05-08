@@ -13,6 +13,7 @@
 #import "RWTImgurCollectionFlowLayoutBuilder.h"
 #import "CHTCollectionViewWaterfallLayout.h"
 #import <TLYShyNavBar/TLYShyNavBarManager.h>
+#import "RWTDetailViewController.h"
 
  static NSString *cellIdentifier = @"cvCell";
 
@@ -59,6 +60,12 @@
 - (UITabBarItem *)tabBarItem {
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
     return tabBarItem;
+}
+
+-(void)viewWillTransitionToSize:(CGSize)size
+      withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Private methods
@@ -142,8 +149,11 @@
                                        
                                        [cell.imageView setImage:image];
                                        
-                                       NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
-                                       [self.imageSizesCache setObject:sizeObj forKey:@(indexPath.row)];
+                                       if (![self.imageSizesCache objectForKey:item.imageUrl]) {
+                                           NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
+                                           [self.imageSizesCache setObject:sizeObj forKey:item.imageUrl];
+                                           [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                                       }
         
                                    }
                                    failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
@@ -174,21 +184,29 @@
     }
     
     
-    if ( ![self.imageSizesCache objectForKey:@(indexPath.row)]) {
+    RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
+    
+    if ( ![self.imageSizesCache objectForKey:item.imageUrl]) {
         
         return CGSizeMake(100, 100);
 
     } else {
         
-        NSValue *value = [self.imageSizesCache objectForKey:@(indexPath.row)];
+        NSValue *value = [self.imageSizesCache objectForKey:item.imageUrl];
         
         return [value CGSizeValue];
         
     }
+}
 
-
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
+    
+    RWTDetailViewModel *viewModel = [[RWTDetailViewModel alloc] initWithImageItem:item];
+    RWTDetailViewController *ctrl = [[RWTDetailViewController alloc] initWithViewModel:viewModel];
+    
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
 @end
