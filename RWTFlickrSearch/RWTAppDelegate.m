@@ -29,9 +29,10 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[searchNavigationController, aboutViewController];
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.tabBarController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -40,8 +41,11 @@
 
     self.viewModelServices = [RWTViewModelServicesImpl new];
     self.viewModel = [[RWTFlickrSearchViewModel alloc] initWithServices:self.viewModelServices];
+    
+    RWTFlickrSearchViewController *ctrl = [[RWTFlickrSearchViewController alloc] initWithViewModel:self.viewModel];
+    ctrl.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
 
-    return [[RWTFlickrSearchViewController alloc] initWithViewModel:self.viewModel];
+    return ctrl;
 }
 
 - (UINavigationController *)getSearchNavigationController{
@@ -54,7 +58,10 @@
 
 - (RWTAboutViewController*)getAboutViewController{
     
-    return [RWTAboutViewController new];
+    RWTAboutViewController* ctrl = [RWTAboutViewController new];
+    ctrl.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:1];
+    
+    return ctrl;
     
 }
 

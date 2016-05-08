@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RWTAboutViewController">
             <connections>
+                <outlet property="appInfoLabel" destination="suH-MC-InL" id="YQb-LJ-GE0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +15,60 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uig-xh-9H9">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxI-Vu-khZ">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="76.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suH-MC-InL" userLabel="App Info">
+                                    <rect key="frame" x="8" y="28" width="584" height="18"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Fabio Hiroki (fabiothiroki@gmail.com)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PI-y8-f30">
+                                    <rect key="frame" x="8" y="54" width="584" height="14.5"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="2PI-y8-f30" secondAttribute="trailing" constant="8" id="3a8-FM-QPq"/>
+                                <constraint firstItem="suH-MC-InL" firstAttribute="leading" secondItem="oxI-Vu-khZ" secondAttribute="leading" constant="8" id="As9-Io-0RE"/>
+                                <constraint firstAttribute="bottom" secondItem="2PI-y8-f30" secondAttribute="bottom" constant="8" id="LpE-ZV-pEm"/>
+                                <constraint firstAttribute="bottom" secondItem="suH-MC-InL" secondAttribute="bottom" constant="8" id="PCh-XK-gjJ"/>
+                                <constraint firstItem="2PI-y8-f30" firstAttribute="top" secondItem="suH-MC-InL" secondAttribute="bottom" constant="8" id="UEb-Iv-n4a"/>
+                                <constraint firstItem="suH-MC-InL" firstAttribute="top" secondItem="oxI-Vu-khZ" secondAttribute="top" constant="28" id="cMK-iA-6X4"/>
+                                <constraint firstAttribute="trailing" secondItem="suH-MC-InL" secondAttribute="trailing" constant="8" id="eLs-Hl-v6J"/>
+                                <constraint firstItem="2PI-y8-f30" firstAttribute="leading" secondItem="oxI-Vu-khZ" secondAttribute="leading" constant="8" id="nKM-Fc-xoB"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="PCh-XK-gjJ"/>
+                                </mask>
+                            </variation>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="oxI-Vu-khZ" firstAttribute="top" secondItem="Uig-xh-9H9" secondAttribute="top" id="AeJ-Ck-laB"/>
+                        <constraint firstAttribute="trailing" secondItem="oxI-Vu-khZ" secondAttribute="trailing" id="Bpv-mU-ojI"/>
+                        <constraint firstItem="oxI-Vu-khZ" firstAttribute="leading" secondItem="Uig-xh-9H9" secondAttribute="leading" id="r6d-mD-LNs"/>
+                        <constraint firstAttribute="bottom" secondItem="oxI-Vu-khZ" secondAttribute="bottom" id="zMl-3G-Svc"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Uig-xh-9H9" secondAttribute="bottom" id="2ib-nL-HqZ"/>
+                <constraint firstItem="Uig-xh-9H9" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="3W8-1h-C3f"/>
+                <constraint firstItem="Uig-xh-9H9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4Da-ks-Ntv"/>
+                <constraint firstItem="oxI-Vu-khZ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="88l-PR-Nap"/>
+                <constraint firstItem="Uig-xh-9H9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="B88-c3-okb"/>
+                <constraint firstAttribute="trailing" secondItem="Uig-xh-9H9" secondAttribute="trailing" id="IrL-NG-cJc"/>
+            </constraints>
         </view>
     </objects>
 </document>

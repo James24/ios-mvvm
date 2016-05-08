@@ -10,7 +10,7 @@
 - [x] Cache images in memory / on disk
 - [x] Allow to select the gallery section section: hot, top, user
 - [x] Include / exclude viral images from the result set
-- [ ] Implement "About" screen containing the app info (version, build time) and author name (email)
+- [x] Implement "About" screen containing the app info (version, build time) and author name (email)
 
 ## Milestone 2
 - [x] Allow to switch between list / grid / staggered grid view
@@ -20,3 +20,6 @@
 
 ## Milestone 3
 - [x] When clicking an image in the gallery - show its details: big image, title, description, upvotes, downvotes and score
+
+## PLUS
+- [ ] Launch image
