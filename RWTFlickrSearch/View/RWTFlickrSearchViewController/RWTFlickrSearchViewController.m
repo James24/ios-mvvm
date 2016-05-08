@@ -144,6 +144,7 @@
                                        
                                        NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
                                        [self.imageSizesCache setObject:sizeObj forKey:item.imageUrl];
+                                       [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
         
                                    }
                                    failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
@@ -187,9 +188,11 @@
         return [value CGSizeValue];
         
     }
+}
 
-
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+//    RWTImgurImageItem *item = self.viewModel.results.data[indexPath.row];
     
 }
 
