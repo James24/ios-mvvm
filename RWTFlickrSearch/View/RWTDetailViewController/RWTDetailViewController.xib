@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RWTDetailViewController">
             <connections>
+                <outlet property="imageView" destination="ARq-JF-g47" id="0WM-zW-5cJ"/>
+                <outlet property="imageViewHeight" destination="jVr-Gw-P9f" id="iGe-KO-LeN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,21 +21,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ud-tK-O8E" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWC-fV-s2t" userLabel="Header View">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
-                                    <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ARq-JF-g47">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="Rud-0e-Sdv"/>
+                                        <constraint firstAttribute="height" constant="300" id="jVr-Gw-P9f"/>
                                     </constraints>
-                                </view>
+                                </imageView>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="JWC-fV-s2t" secondAttribute="bottom" id="BAc-03-RgB"/>
-                                <constraint firstItem="JWC-fV-s2t" firstAttribute="top" secondItem="1ud-tK-O8E" secondAttribute="top" id="Edj-95-GyN"/>
-                                <constraint firstAttribute="trailing" secondItem="JWC-fV-s2t" secondAttribute="trailing" id="OdR-sN-6N3"/>
-                                <constraint firstItem="JWC-fV-s2t" firstAttribute="leading" secondItem="1ud-tK-O8E" secondAttribute="leading" id="g8y-sN-gUN"/>
+                                <constraint firstItem="ARq-JF-g47" firstAttribute="top" secondItem="1ud-tK-O8E" secondAttribute="top" id="SwI-PY-V8i"/>
+                                <constraint firstItem="ARq-JF-g47" firstAttribute="leading" secondItem="1ud-tK-O8E" secondAttribute="leading" id="Wxa-ol-rkr"/>
+                                <constraint firstAttribute="trailing" secondItem="ARq-JF-g47" secondAttribute="trailing" id="Z6Z-eM-NWb"/>
+                                <constraint firstAttribute="bottom" secondItem="ARq-JF-g47" secondAttribute="bottom" id="ecV-Vl-oWF"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -51,7 +52,7 @@
                     </variation>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="qog-P8-caK" secondAttribute="trailing" id="FvE-33-Uyx"/>
                 <constraint firstAttribute="bottom" secondItem="qog-P8-caK" secondAttribute="bottom" id="GFb-D2-R5A"/>

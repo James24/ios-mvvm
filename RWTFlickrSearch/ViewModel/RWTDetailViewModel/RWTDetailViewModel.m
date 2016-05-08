@@ -23,11 +23,19 @@
     if (self){
         
         _imageItem = imageItem;
-        _title = @"Image Details";
+        _title = imageItem.title;
         
     }
     
     return self;
+}
+
+- (NSString *)desc{
+    return _imageItem.desc;
+}
+
+- (NSString *)imageUrl{
+    return _imageItem.imageUrl;
 }
 
 @end

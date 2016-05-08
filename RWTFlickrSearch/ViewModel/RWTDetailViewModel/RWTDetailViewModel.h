@@ -12,7 +12,8 @@
 @interface RWTDetailViewModel : NSObject
 
 @property(strong, nonatomic) NSString *title;
-
+@property(strong, nonatomic) NSString *desc;
+@property(strong, nonatomic) NSString *imageUrl;
 
 - (instancetype)initWithImageItem:(RWTImgurImageItem*)imageItem;
 

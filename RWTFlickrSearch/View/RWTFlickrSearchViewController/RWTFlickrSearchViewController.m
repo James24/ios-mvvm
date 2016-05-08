@@ -149,9 +149,11 @@
                                        
                                        [cell.imageView setImage:image];
                                        
-                                       NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
-                                       [self.imageSizesCache setObject:sizeObj forKey:item.imageUrl];
-                                       [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                                       if (![self.imageSizesCache objectForKey:item.imageUrl]) {
+                                           NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
+                                           [self.imageSizesCache setObject:sizeObj forKey:item.imageUrl];
+                                           [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                                       }
         
                                    }
                                    failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
