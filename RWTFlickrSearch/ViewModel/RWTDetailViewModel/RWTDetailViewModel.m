@@ -38,4 +38,8 @@
     return _imageItem.imageUrl;
 }
 
+- (NSString *)scores{
+    return [NSString stringWithFormat:@"Upvotes: %@ | Downvotes: %@ | Score: %@",[_imageItem.ups stringValue], [_imageItem.downs stringValue], [_imageItem.points stringValue]];
+}
+
 @end

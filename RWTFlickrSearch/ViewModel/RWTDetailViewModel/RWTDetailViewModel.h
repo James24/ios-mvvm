@@ -14,6 +14,7 @@
 @property(strong, nonatomic) NSString *title;
 @property(strong, nonatomic) NSString *desc;
 @property(strong, nonatomic) NSString *imageUrl;
+@property(strong, nonatomic) NSString *scores;
 
 - (instancetype)initWithImageItem:(RWTImgurImageItem*)imageItem;
 

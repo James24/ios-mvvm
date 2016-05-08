@@ -8,14 +8,17 @@
 
 #import "RWTDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import <TLYShyNavBar/TLYShyNavBarManager.h>
 
 @interface RWTDetailViewController ()
 
 @property(strong, nonatomic) RWTDetailViewModel *viewModel;
 
-@property (weak, nonatomic) IBOutlet UILabel *imageDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *scores;
+@property (weak, nonatomic) IBOutlet UILabel *imageDescription;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 
 @end
 
@@ -37,6 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.shyNavBarManager.scrollView = self.scrollview;
+    
     [self bindViewModel];
 }
 
@@ -48,8 +53,8 @@
 - (void)bindViewModel{
     
     self.title = self.viewModel.title;
+    self.scores.text = self.viewModel.scores;
     self.imageDescription.text = self.viewModel.desc;
-    
     
     [self.imageView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:self.viewModel.imageUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60]
                           placeholderImage:nil

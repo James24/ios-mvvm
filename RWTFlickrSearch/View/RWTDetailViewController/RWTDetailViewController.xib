@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RWTDetailViewController">
             <connections>
+                <outlet property="imageDescription" destination="v2S-Ri-de9" id="Qod-lg-isk"/>
                 <outlet property="imageView" destination="ARq-JF-g47" id="0WM-zW-5cJ"/>
                 <outlet property="imageViewHeight" destination="jVr-Gw-P9f" id="iGe-KO-LeN"/>
+                <outlet property="scores" destination="jsX-rM-l0W" id="sBb-sb-rd1"/>
+                <outlet property="scrollview" destination="qog-P8-caK" id="nPg-zM-JoU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,17 +40,42 @@
                                 <constraint firstAttribute="bottom" secondItem="ARq-JF-g47" secondAttribute="bottom" id="ecV-Vl-oWF"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsX-rM-l0W" userLabel="Scores">
+                            <rect key="frame" x="8" y="308" width="584" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="hT6-xy-Yd8"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2S-Ri-de9">
+                            <rect key="frame" x="8" y="337" width="584" height="13.5"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="1ud-tK-O8E" secondAttribute="bottom" id="0Gf-Qp-8y7"/>
+                        <constraint firstItem="v2S-Ri-de9" firstAttribute="top" secondItem="jsX-rM-l0W" secondAttribute="bottom" constant="8" id="1OD-lY-hMd"/>
+                        <constraint firstAttribute="bottom" secondItem="jsX-rM-l0W" secondAttribute="bottom" constant="8" id="1rW-7A-ktd"/>
+                        <constraint firstItem="jsX-rM-l0W" firstAttribute="leading" secondItem="qog-P8-caK" secondAttribute="leading" constant="8" id="2Dc-3s-NLA"/>
+                        <constraint firstAttribute="bottom" secondItem="v2S-Ri-de9" secondAttribute="bottom" constant="8" id="YdE-fD-zPf"/>
                         <constraint firstItem="1ud-tK-O8E" firstAttribute="top" secondItem="qog-P8-caK" secondAttribute="top" id="b71-ZN-NcR"/>
+                        <constraint firstItem="v2S-Ri-de9" firstAttribute="leading" secondItem="qog-P8-caK" secondAttribute="leading" constant="8" id="dNB-Jx-95F"/>
                         <constraint firstItem="1ud-tK-O8E" firstAttribute="width" secondItem="qog-P8-caK" secondAttribute="width" id="fjL-hg-Scf"/>
                         <constraint firstItem="1ud-tK-O8E" firstAttribute="leading" secondItem="qog-P8-caK" secondAttribute="leading" id="itz-uH-MGg"/>
+                        <constraint firstAttribute="trailing" secondItem="jsX-rM-l0W" secondAttribute="trailing" constant="8" id="iyg-N6-0J8"/>
                         <constraint firstAttribute="trailing" secondItem="1ud-tK-O8E" secondAttribute="trailing" id="l93-0j-soJ"/>
+                        <constraint firstItem="jsX-rM-l0W" firstAttribute="top" secondItem="1ud-tK-O8E" secondAttribute="bottom" constant="8" id="rIO-HD-NwN"/>
+                        <constraint firstAttribute="trailing" secondItem="v2S-Ri-de9" secondAttribute="trailing" constant="8" id="tgt-xh-n9e"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="0Gf-Qp-8y7"/>
                             <exclude reference="fjL-hg-Scf"/>
+                            <exclude reference="1rW-7A-ktd"/>
                         </mask>
                     </variation>
                 </scrollView>
