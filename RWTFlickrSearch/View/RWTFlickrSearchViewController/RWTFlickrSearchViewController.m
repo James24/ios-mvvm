@@ -57,11 +57,6 @@
     
 }
 
-- (UITabBarItem *)tabBarItem {
-    UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
-    return tabBarItem;
-}
-
 -(void)viewWillTransitionToSize:(CGSize)size
       withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
     [self.collectionView.collectionViewLayout invalidateLayout];
@@ -153,6 +148,7 @@
                                            NSValue *sizeObj = [NSValue valueWithCGSize:image.size];
                                            [self.imageSizesCache setObject:sizeObj forKey:item.imageUrl];
                                            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                                           
                                        }
         
                                    }

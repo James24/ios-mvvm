@@ -9,6 +9,7 @@
 #import "RWTAboutViewController.h"
 
 @interface RWTAboutViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *appInfoLabel;
 
 @end
 
@@ -16,12 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self setupAppInfo];
 }
 
-- (UITabBarItem *)tabBarItem {
-    UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:1];
-    return tabBarItem;
+- (void)setupAppInfo{
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    NSString *build = infoDictionary[(NSString*)kCFBundleVersionKey];
+    
+    
+    self.appInfoLabel.text = [NSString stringWithFormat:@"Imgur Gallery %@ (%@)", version, build];
 }
 
 @end
