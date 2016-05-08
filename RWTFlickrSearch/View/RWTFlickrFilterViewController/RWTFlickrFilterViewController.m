@@ -151,6 +151,14 @@
             
             [self.sortPickerView reloadAllComponents];
         }
+        
+        
+        
+        [self.showViralSwitch setEnabled:!userHasSelectedAnySectionButUSer];
+        
+        if (userHasSelectedAnySectionButUSer) {
+            [self.showViralSwitch setOn:NO animated:YES];
+        }
     }];
     
 

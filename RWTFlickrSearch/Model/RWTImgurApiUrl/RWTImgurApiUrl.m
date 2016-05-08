@@ -34,7 +34,7 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 - (NSString *)getFullUrl {
     
-    NSString *fullUrl = [NSString stringWithFormat:@"%@%@%@%@.json?showViral=%@", IMGUR_BASEURL, [self getSectionPath], [self getSortParameter], [self getWindowParameter], [self getShowViralParameter]];
+    NSString *fullUrl = [NSString stringWithFormat:@"%@%@%@%@.json%@", IMGUR_BASEURL, [self getSectionPath], [self getSortParameter], [self getWindowParameter], [self getShowViralParameter]];
     
     NSLog(@"FULL URL: %@", fullUrl);
     
@@ -107,10 +107,15 @@ NSString * const IMGUR_BASEURL = @"https://api.imgur.com/3/gallery/";
 
 
 - (NSString *)getShowViralParameter{
+    
+    if (self.section != RWTImgurApiRequestSectionTypeUser) {
+        return @"";
+    }
+    
     if (self.showViral) {
-        return @"true";
+        return @"?showViral=true";
     } else {
-        return @"false";
+        return @"?showViral=false";
     }
 }
 
